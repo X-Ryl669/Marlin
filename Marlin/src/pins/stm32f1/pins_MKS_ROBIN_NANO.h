@@ -146,6 +146,9 @@
 
 //#define LED_PIN                           PB2
 
+#define WIFI_IO1_PIN       			            PC7
+#define WIFI_RESET_PIN			              	PA5
+
 //
 // SD Card
 //
