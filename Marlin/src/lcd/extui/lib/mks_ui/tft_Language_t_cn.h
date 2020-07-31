@@ -249,6 +249,17 @@
 #define Z_SENSITIVITY_T_CN                      "Z軸靈敏度"
 #define Z2_SENSITIVITY_T_CN                     "Z2軸靈敏度"
 
+#define OFFSET_TITLE_T_CN               "機器參數>偏移設置"
+#define OFFSET_X_T_CN                   "X軸與調平開關偏移"
+#define OFFSET_Y_T_CN                   "Y軸與調平開關偏移"
+#define OFFSET_Z_T_CN                   "Z軸與調平開關偏移"
+
+#define HOMING_SENSITIVITY_CONF_TITLE_T_CN      "機器參數>靈敏度調節"
+#define X_SENSITIVITY_T_CN                      "X軸靈敏度"
+#define Y_SENSITIVITY_T_CN                      "Y軸靈敏度"
+#define Z_SENSITIVITY_T_CN                      "Z軸靈敏度"
+#define Z2_SENSITIVITY_T_CN                     "Z2軸靈敏度"
+
 #define ENCODER_CONF_TITLE_T_CN                 "機器參數>旋鈕設置"
 #define ENCODER_CONF_TEXT_T_CN                  "是否使用旋鈕功能?"
 

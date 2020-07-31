@@ -258,6 +258,12 @@
 #define HOME_TEXT_CN                "回零"
 #define PRINT_TEXT_CN               "打印"
 #define EXTRUDE_TEXT_CN             "挤出"
+#define HOMING_SENSITIVITY_CONF_TITLE_CN      "机器参数>灵敏度调节"
+#define X_SENSITIVITY_CN                      "X轴灵敏度"
+#define Y_SENSITIVITY_CN                      "Y轴灵敏度"
+#define Z_SENSITIVITY_CN                      "Z轴灵敏度"
+#define Z2_SENSITIVITY_CN                     "Z2轴灵敏度"
+
 #define LEVELING_TEXT_CN            "调平"
 #define AUTO_LEVELING_TEXT_CN       "自动调平"
 #define SET_TEXT_CN                 "设置"

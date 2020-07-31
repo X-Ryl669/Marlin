@@ -297,6 +297,12 @@ void machine_setting_disp() {
   else if (gCfgItems.language == LANG_COMPLEX_CHINESE) {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_T_CN;
     MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_T_CN;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_CN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_CN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_CN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_CN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_T_CN;
     MachinePara_menu.leveling           = MACHINE_LEVELING_CONFIG_T_CN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_T_CN;
@@ -533,6 +539,12 @@ void machine_setting_disp() {
   else {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_EN;
     MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_EN;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_T_CN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_T_CN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_T_CN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_T_CN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_T_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_EN;
     MachinePara_menu.leveling           = MACHINE_LEVELING_CONFIG_EN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_EN;
@@ -770,6 +782,12 @@ void machine_setting_disp() {
 
 void disp_language_init() {
   preheat_menu.value_state = TEXT_VALUE;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_EN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_EN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_EN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_EN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_EN;
   preheat_menu.step_1c     = TEXT_1C;
   preheat_menu.step_5c     = TEXT_5C;
   preheat_menu.step_10c    = TEXT_10C;

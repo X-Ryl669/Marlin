@@ -177,6 +177,12 @@ void gCfgItems_init() {
   W25QXX.SPI_FLASH_BufferWrite(uiCfg.F,REFLSHE_FLGA_ADD,4);
 }
 
+  gCfgItems.filamentchange_load_length   = 200;
+  gCfgItems.filamentchange_load_speed    = 1000;
+  gCfgItems.filamentchange_unload_length = 200;
+  gCfgItems.filamentchange_unload_speed  = 1000;
+  gCfgItems.filament_limit_temper        = 200;
+  
 void ui_cfg_init() {
   uiCfg.curTempType         = 0;
   uiCfg.curSprayerChoose    = 0;
@@ -224,6 +230,9 @@ void ui_cfg_init() {
 
     strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
     uiCfg.cloud_port = 10086;
+  uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length*60.0/gCfgItems.filamentchange_load_speed)+0.5);
+  uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length*60.0/gCfgItems.filamentchange_unload_speed)+0.5);
+
   #endif
 
   uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length * 60.0 / gCfgItems.filamentchange_load_speed) + 0.5);
@@ -328,6 +337,8 @@ void tft_style_init() {
   style_para_value_rel.line.width        = 0;
   style_para_value_pre.text.letter_space = 0;
   style_para_value_rel.text.letter_space = 0;
+lv_style_t lv_bar_style_indic;
+
   style_para_value_pre.text.line_space   = -5;
   style_para_value_rel.text.line_space   = -5;
 
@@ -474,6 +485,15 @@ char *getDispText(int index) {
     case PRE_HEAT_UI:
       if ((disp_state_stack._disp_state[disp_state_stack._disp_index - 1] == OPERATE_UI))
            strcpy(public_buf_l, preheat_menu.adjust_title);
+
+  lv_style_copy(&lv_bar_style_indic, &lv_style_pretty_color);
+  lv_bar_style_indic.text.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.image.color       = lv_color_hex3(0xADF);
+  lv_bar_style_indic.line.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.main_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.grad_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.border.color = lv_color_hex3(0xADF);
+  
       else strcpy(public_buf_l, preheat_menu.title);
       break;
     case SET_UI:

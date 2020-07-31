@@ -208,6 +208,7 @@ void lv_draw_operation(void) {
     buttonSpeed    = lv_imgbtn_create(scr, NULL);
     buttonBabyStep = lv_imgbtn_create(scr, NULL);
   }
+  buttonFilament = lv_imgbtn_create(scr, NULL);
   buttonBack       = lv_imgbtn_create(scr, NULL);
 
   lv_obj_set_event_cb_mks(buttonPreHeat, event_handler, ID_O_PRE_HEAT, NULL, 0);
@@ -301,6 +302,9 @@ void lv_draw_operation(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
+  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_PR, &tft_style_label_pre);
+  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_REL, &tft_style_label_rel);
+  
 
   lv_obj_set_pos(buttonPreHeat, INTERVAL_V, titleHeight);
   lv_obj_set_pos(buttonFilament, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight);
@@ -314,10 +318,12 @@ void lv_draw_operation(void) {
     */
     lv_obj_set_pos(buttonExtrusion, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
     lv_obj_set_pos(buttonMove, BTN_X_PIXEL + INTERVAL_V * 2, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
+    lv_obj_set_pos(buttonFilament, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   }
   else {
     lv_obj_set_pos(buttonSpeed, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
     lv_obj_set_pos(buttonBabyStep, BTN_X_PIXEL + INTERVAL_V * 2, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
+    lv_obj_set_pos(buttonFilament, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   }
 
   lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
@@ -393,10 +399,14 @@ void lv_draw_operation(void) {
     else {
       lv_label_set_text(label_Speed, operation_menu.speed);
       lv_obj_align(label_Speed, buttonSpeed, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
+    }
 
       lv_label_set_text(label_BabyStep, operation_menu.babystep);
       lv_obj_align(label_BabyStep, buttonBabyStep, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
     }
+
+    lv_label_set_text(label_Filament, operation_menu.filament);
+    lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
     lv_label_set_text(label_Back, common_menu.text_back);
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);

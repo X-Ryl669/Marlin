@@ -93,6 +93,10 @@
 #include "draw_keyboard.h"
 #include "draw_wifi.h"
 #include "draw_wifi_list.h"
+#include "draw_filament_change.h"
+#include "draw_filament_settings.h"
+#include "draw_homing_sensitivity_settings.h"
+#include "draw_baby_stepping.h"
 #include "draw_wifi_tips.h"
 
 #include "../../inc/MarlinConfigPre.h"
@@ -204,6 +208,7 @@ typedef struct {
   float pausePosY;
   float pausePosZ;
   uint32_t curFilesize;
+  
 } CFG_ITMES;
 
 typedef struct {
@@ -421,6 +426,17 @@ extern DISP_STATE disp_state;
 extern DISP_STATE last_disp_state;
 extern DISP_STATE_STACK disp_state_stack;
 
+  ,
+  load_length,
+  load_speed,
+  unload_length,
+  unload_speed,
+  filament_temp,
+
+  x_sensitivity,
+  y_sensitivity,
+  z_sensitivity,
+  z2_sensitivity
 extern lv_style_t tft_style_scr;
 extern lv_style_t tft_style_label_pre;
 extern lv_style_t tft_style_label_rel;
@@ -455,6 +471,7 @@ extern void sd_detection();
 extern void gCfg_to_spiFlah();
 extern void print_time_count();
 
+extern lv_style_t lv_bar_style_indic;
 extern void LV_TASK_HANDLER();
 extern void lv_ex_line(lv_obj_t * line, lv_point_t *points);
 

@@ -254,6 +254,12 @@
 #define WIFI_SETTINGS_EDIT_EN     "Edit"
 #define WIFI_CONFIG_TIPS_EN       "Wi-Fi configuration?"
 
+#define HOMING_SENSITIVITY_CONF_TITLE_EN      "Machine Settings>Sensitivity"
+#define X_SENSITIVITY_EN                      "X Axis Sensitivity"
+#define Y_SENSITIVITY_EN                      "Y Axis Sensitivity"
+#define Z_SENSITIVITY_EN                      "Z Axis Sensitivity"
+#define Z2_SENSITIVITY_EN                     "Z2 Axis Sensitivity"
+
 #define OFFSET_TITLE_EN  "Machine Settings>Offset"
 #define OFFSET_X_EN      "X offset"
 #define OFFSET_Y_EN      "Y offset"
