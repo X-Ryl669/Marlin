@@ -140,6 +140,12 @@ void gCfgItems_init() {
   W25QXX.SPI_FLASH_BufferWrite(uiCfg.F,REFLSHE_FLGA_ADD,4);
 }
 
+  gCfgItems.filamentchange_load_length   = 200;
+  gCfgItems.filamentchange_load_speed    = 1000;
+  gCfgItems.filamentchange_unload_length = 200;
+  gCfgItems.filamentchange_unload_speed  = 1000;
+  gCfgItems.filament_limit_temper        = 200;
+  
 void gCfg_to_spiFlah() {
   W25QXX.SPI_FLASH_SectorErase(VAR_INF_ADDR);
   W25QXX.SPI_FLASH_BufferWrite((uint8_t *)&gCfgItems, VAR_INF_ADDR, sizeof(gCfgItems));
@@ -156,8 +162,16 @@ void ui_cfg_init() {
   uiCfg.move_dist           = 1;
   uiCfg.moveSpeed           = 3000;
   uiCfg.stepPrintSpeed      = 10;
-  uiCfg.command_send = 0;
-  uiCfg.dialogType = 0;
+  uiCfg.command_send        = 0;
+  uiCfg.dialogType          = 0;
+  uiCfg.filament_heat_completed_load = 0;
+  uiCfg.filament_rate                = 0;
+  uiCfg.filament_loading_completed   = 0;
+  uiCfg.filament_unloading_completed = 0;
+  uiCfg.filament_loading_time_flg    = 0;
+  uiCfg.filament_loading_time_cnt    = 0;
+  uiCfg.filament_unloading_time_flg  = 0;
+  uiCfg.filament_unloading_time_cnt  = 0;
 	
   #if USE_WIFI_FUNCTION
 	
@@ -185,6 +199,9 @@ void ui_cfg_init() {
 	
   strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
   uiCfg.cloud_port = 10086;
+
+  uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length*60.0/gCfgItems.filamentchange_load_speed)+0.5);
+  uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length*60.0/gCfgItems.filamentchange_unload_speed)+0.5);
 
   #endif
 }
@@ -251,6 +268,8 @@ void tft_style_init() {
   style_para_value_rel.line.width        = 0;
   style_para_value_pre.text.letter_space = 0;
   style_para_value_rel.text.letter_space = 0;
+lv_style_t lv_bar_style_indic;
+
   style_para_value_pre.text.line_space   = -5;
   style_para_value_rel.text.line_space   = -5;
   lv_style_copy(&style_num_key_pre, &lv_style_scr);
@@ -367,6 +386,15 @@ char *getDispText(int index) {
     case PRE_HEAT_UI:
       if ((disp_state_stack._disp_state[disp_state_stack._disp_index - 1] == OPERATE_UI))
            strcpy(public_buf_l, preheat_menu.adjust_title);
+
+  lv_style_copy(&lv_bar_style_indic, &lv_style_pretty_color);
+  lv_bar_style_indic.text.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.image.color       = lv_color_hex3(0xADF);
+  lv_bar_style_indic.line.color        = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.main_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.grad_color   = lv_color_hex3(0xADF);
+  lv_bar_style_indic.body.border.color = lv_color_hex3(0xADF);
+  
       else strcpy(public_buf_l, preheat_menu.title);
       break;
     case SET_UI:
@@ -1015,15 +1043,13 @@ void GUI_RefreshPage() {
       break;
 
     case FILAMENTCHANGE_UI:
-      /*
       if (temperature_change_frequency) {
         temperature_change_frequency = 0;
-        disp_filament_sprayer_temp();
+        disp_filament_temp();
       }
-      */
       break;
     case DIALOG_UI:
-      /*filament_dialog_handle();*/
+      filament_dialog_handle();
       wifi_scan_handle();
       break;
     case MESHLEVELING_UI:
@@ -1091,12 +1117,10 @@ void GUI_RefreshPage() {
 	            }
       break;
     case BABY_STEP_UI:
-      /*
       if (temperature_change_frequency == 1) {
         temperature_change_frequency = 0;
         disp_z_offset_value();
       }
-      */
       break;
     default: break;
   }
@@ -1181,6 +1205,9 @@ void clear_cur_ui() {
     case PRINT_MORE_UI:
       //Clear_Printmore();
       break;
+    case FILAMENTCHANGE_UI:
+      lv_clear_filament_change();
+      break;
     case LEVELING_UI:
       lv_clear_manualLevel();
       break;
@@ -1233,7 +1260,7 @@ void clear_cur_ui() {
       //Clear_EndstopType();
       break;
     case FILAMENT_SETTINGS_UI:
-      //Clear_FilamentSettings();
+      lv_clear_filament_settings();
       break;
     case LEVELING_SETTIGNS_UI:
       //Clear_LevelingSettings();
@@ -1286,7 +1313,7 @@ void clear_cur_ui() {
       lv_clear_number_key();
       break;
     case BABY_STEP_UI:
-      //Clear_babyStep();
+      lv_clear_baby_stepping();
       break;
     case PAUSE_POS_UI:
       lv_clear_pause_position();
@@ -1304,13 +1331,17 @@ void clear_cur_ui() {
           lv_clear_tmc_step_mode_settings();
           break;
       #endif
-	#if USE_WIFI_FUNCTION
-	case WIFI_SETTINGS_UI:
-		lv_clear_wifi_settings();
-		break;
-	#endif
-    default:
+    #if USE_WIFI_FUNCTION
+    case WIFI_SETTINGS_UI:
+      lv_clear_wifi_settings();
       break;
+    #endif
+    #if USE_SENSORLESS
+      case HOMING_SENSITIVITY_UI:
+        lv_clear_homing_sensitivity_settings();
+        break;
+    #endif
+    default: break;  
   }
   //GUI_Clear();
 }
@@ -1388,7 +1419,7 @@ void draw_return_ui() {
         //draw_Disk();
         break;
       case WIFI_UI:
-	    lv_draw_wifi();
+	      lv_draw_wifi();
         break;
       case MORE_UI:
         //draw_More();
@@ -1397,7 +1428,7 @@ void draw_return_ui() {
         //draw_printmore();
         break;
       case FILAMENTCHANGE_UI:
-        //draw_FilamentChange();
+        lv_draw_filament_change();
         break;
       case LEVELING_UI:
         lv_draw_manualLevel();
@@ -1455,7 +1486,7 @@ void draw_return_ui() {
         //draw_EndstopType();
         break;
       case FILAMENT_SETTINGS_UI:
-        //draw_FilamentSettings();
+        lv_draw_filament_settings();
         break;
       case LEVELING_SETTIGNS_UI:
         //draw_LevelingSettings();
@@ -1511,7 +1542,7 @@ void draw_return_ui() {
         //draw_dialog(uiCfg.dialogType);
         break;
       case BABY_STEP_UI:
-        //draw_babyStep();
+        lv_draw_baby_stepping();
         break;
       case PAUSE_POS_UI:
         lv_draw_pause_position();
@@ -1529,11 +1560,16 @@ void draw_return_ui() {
             lv_draw_tmc_step_mode_settings();
             break;
         #endif
-	  #if USE_WIFI_FUNCTION
-	  case WIFI_SETTINGS_UI:
-		lv_draw_wifi_settings();
-		break;
-	  #endif
+      #if USE_WIFI_FUNCTION
+        case WIFI_SETTINGS_UI:
+        lv_draw_wifi_settings();
+        break;
+      #endif
+      #if USE_SENSORLESS
+        case HOMING_SENSITIVITY_UI:
+          lv_draw_homing_sensitivity_settings();
+          break;
+      #endif
       default: break;
     }
   }

@@ -92,14 +92,13 @@
 #define ENDSTOP_CLOSED_EN               "Close"
 
 #define FILAMENT_CONF_TITLE_EN          "Filament settings"
-#define FILAMENT_IN_TEMPERATURE_EN      "Load temperature"
 #define FILAMENT_IN_LENGTH_EN           "Load length"
 #define FILAMENT_IN_SPEED_EN            "Load speed"
-#define FILAMENT_OUT_TEMPERATURE_EN     "Unload temperature"
+#define FILAMENT_TEMPERATURE_EN         "Filament temperature"
 #define FILAMENT_OUT_LENGTH_EN          "Unload length"
 #define FILAMENT_OUT_SPEED_EN           "Unload speed"
 
-#define LEVELING_CONF_TITLE_EN          "Leveling settings"
+#define LEVELING_CONF_TITLE_EN          "Machine Settings>Leveling settings"
 #define LEVELING_PARA_CONF_EN           "Leveling settings"
 #define LEVELING_DELTA_EN               "delta machine leveling"
 #define LEVELING_XYZ_EN                 "Manual leveling coordinate settings"
@@ -226,7 +225,8 @@
 #define HAVE_UPS_EN                     "Has UPS power supply"
 #define Z2_AND_Z2ENDSTOP_CONF_EN        "Z2 Settings"
 #define ENABLE_PINS_CONF_EN             "Enable pins level settings"
-#define WIFI_SETTINGS_EN							"Wi-Fi parameter settings"
+#define WIFI_SETTINGS_EN							  "Wi-Fi parameter settings"
+#define HOMING_SENSITIVITY_CONF_EN    "Homing sensitivity settings"
 
 #define Z2_AND_Z2ENDSTOP_CONF_TITLE_EN  "Z2 Settings"
 #define Z2_ENABLE_EN                    "Z2 Enable"
@@ -252,6 +252,12 @@
 #define WIFI_SETTINGS_CONFIG_EN		"Config"
 #define WIFI_SETTINGS_EDIT_EN		"Edit"
 #define WIFI_CONFIG_TIPS_EN			"Wi-Fi configuration?"
+
+#define HOMING_SENSITIVITY_CONF_TITLE_EN      "Machine Settings>Sensitivity"
+#define X_SENSITIVITY_EN                      "X Axis Sensitivity"
+#define Y_SENSITIVITY_EN                      "Y Axis Sensitivity"
+#define Z_SENSITIVITY_EN                      "Z Axis Sensitivity"
+#define Z2_SENSITIVITY_EN                     "Z2 Axis Sensitivity"
 
 #define TOOL_TEXT_EN            "Tool"
 #define PREHEAT_TEXT_EN         "Preheat"

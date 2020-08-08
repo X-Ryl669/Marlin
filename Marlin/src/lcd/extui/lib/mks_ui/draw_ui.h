@@ -74,6 +74,10 @@
 #include "draw_keyboard.h"
 #include "draw_wifi.h"
 #include "draw_wifi_list.h"
+#include "draw_filament_change.h"
+#include "draw_filament_settings.h"
+#include "draw_homing_sensitivity_settings.h"
+#include "draw_baby_stepping.h"
 #include "draw_wifi_tips.h"
 
 #include "../../inc/MarlinConfigPre.h"
@@ -161,10 +165,16 @@ typedef struct {
   uint8_t fileSysType;
   uint8_t wifi_type;
   bool  cloud_enable;
+  int   filamentchange_load_length;
+  int   filamentchange_load_speed;
+  int   filamentchange_unload_length;
+  int   filamentchange_unload_speed;
+  int   filament_limit_temper;
   float pausePosX;
   float pausePosY;
   float pausePosZ;
   uint32_t curFilesize;
+  
 } CFG_ITMES;
 
 typedef struct {
@@ -173,8 +183,17 @@ typedef struct {
           stepHeat : 4;
   uint8_t leveling_first_time : 1,
           para_ui_page:1,
-		  configWifi:1,
-		  command_send:1;
+	        configWifi:1,
+	        command_send:1,
+          filament_load_heat_flg:1,
+          filament_heat_completed_load:1,
+          filament_unload_heat_flg:1,
+          filament_heat_completed_unload:1;
+  uint8_t filament_loading_completed:1,
+  		    filament_unloading_completed:1,
+  		    filament_loading_time_flg:1,
+  		    filament_unloading_time_flg:1,
+          curSprayerChoose_bak:4;
   uint8_t wifi_name[32];
   uint8_t wifi_key[64];
   uint8_t cloud_hostUrl[96];
@@ -184,10 +203,17 @@ typedef struct {
   uint8_t stepPrintSpeed;
   uint8_t waitEndMoves;
   uint8_t dialogType;
+  uint8_t filament_rate;
   uint16_t moveSpeed;
   uint16_t cloud_port;
+  uint16_t moveSpeed_bak;
   uint32_t totalSend;
+  uint32_t filament_loading_time;
+  uint32_t filament_unloading_time;
+  uint32_t filament_loading_time_cnt;
+  uint32_t filament_unloading_time_cnt;
   float move_dist;
+  float desireSprayerTempBak;
   uint8_t	F[4];
 } UI_CFG;
 
@@ -260,7 +286,8 @@ typedef enum {
   TMC_CURRENT_UI,
   TMC_MODE_UI,
 	EEPROM_SETTINGS_UI,
-	WIFI_SETTINGS_UI
+	WIFI_SETTINGS_UI,
+  HOMING_SENSITIVITY_UI
 } DISP_STATE;
 
 typedef struct {
@@ -331,6 +358,17 @@ extern DISP_STATE disp_state;
 extern DISP_STATE last_disp_state;
 extern DISP_STATE_STACK disp_state_stack;
 
+  ,
+  load_length,
+  load_speed,
+  unload_length,
+  unload_speed,
+  filament_temp,
+
+  x_sensitivity,
+  y_sensitivity,
+  z_sensitivity,
+  z2_sensitivity
 extern lv_style_t tft_style_scr;
 extern lv_style_t tft_style_label_pre;
 extern lv_style_t tft_style_label_rel;
@@ -360,6 +398,7 @@ extern void sd_detection();
 extern void gCfg_to_spiFlah();
 extern void print_time_count();
 
+extern lv_style_t lv_bar_style_indic;
 extern void LV_TASK_HANDLER();
 extern void lv_ex_line(lv_obj_t * line, lv_point_t *points);
 

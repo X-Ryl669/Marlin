@@ -116,13 +116,12 @@ void machine_setting_disp() {
     machine_menu.opened           = ENDSTOP_OPENED_CN;
     machine_menu.closed           = ENDSTOP_CLOSED_CN;
 
-    machine_menu.FilamentConfTitle = FILAMENT_CONF_TITLE_CN;
-    machine_menu.InTemperature     = FILAMENT_IN_TEMPERATURE_CN;
-    machine_menu.InLength          = FILAMENT_IN_LENGTH_CN;
-    machine_menu.InSpeed           = FILAMENT_IN_SPEED_CN;
-    machine_menu.OutTemperature    = FILAMENT_OUT_TEMPERATURE_CN;
-    machine_menu.OutLength         = FILAMENT_OUT_LENGTH_CN;
-    machine_menu.OutSpeed          = FILAMENT_OUT_SPEED_CN;
+    machine_menu.FilamentConfTitle   = FILAMENT_CONF_TITLE_CN;
+    machine_menu.InLength            = FILAMENT_IN_LENGTH_CN;
+    machine_menu.InSpeed             = FILAMENT_IN_SPEED_CN;
+    machine_menu.FilamentTemperature = FILAMENT_TEMPERATURE_CN;
+    machine_menu.OutLength           = FILAMENT_OUT_LENGTH_CN;
+    machine_menu.OutSpeed            = FILAMENT_OUT_SPEED_CN;
 
     machine_menu.LevelingParaConfTitle = LEVELING_CONF_TITLE_CN;
     machine_menu.LevelingParaConf      = LEVELING_PARA_CONF_CN;
@@ -177,17 +176,18 @@ void machine_setting_disp() {
     machine_menu.HotbedMinTemperature = HOTBED_MIN_TEMPERATURE_CN;
     machine_menu.HotbedMaxTemperature = HOTBED_MAX_TEMPERATURE_CN;
 
-    machine_menu.MotorConfTitle   = MOTOR_CONF_TITLE_CN;
-    machine_menu.MaxFeedRateConf  = MAXFEEDRATE_CONF_CN;
-    machine_menu.AccelerationConf = ACCELERATION_CONF_CN;
-    machine_menu.JerkConf         = JERKCONF_CN;
-    machine_menu.StepsConf        = STEPSCONF_CN;
-    machine_menu.TMCcurrentConf   = TMC_CURRENT_CN;
-    machine_menu.TMCStepModeConf  = TMC_STEP_MODE_CN;
-    machine_menu.MotorDirConf     = MOTORDIRCONF_CN;
-    machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_CN;
-    machine_menu.PausePosition    = PAUSE_POSITION_CN;
-	  machine_menu.WifiSettings     = WIFI_SETTINGS_CN;
+    machine_menu.MotorConfTitle        = MOTOR_CONF_TITLE_CN;
+    machine_menu.MaxFeedRateConf       = MAXFEEDRATE_CONF_CN;
+    machine_menu.AccelerationConf      = ACCELERATION_CONF_CN;
+    machine_menu.JerkConf              = JERKCONF_CN;
+    machine_menu.StepsConf             = STEPSCONF_CN;
+    machine_menu.TMCcurrentConf        = TMC_CURRENT_CN;
+    machine_menu.TMCStepModeConf       = TMC_STEP_MODE_CN;
+    machine_menu.MotorDirConf          = MOTORDIRCONF_CN;
+    machine_menu.HomeFeedRateConf      = HOMEFEEDRATECONF_CN;
+    machine_menu.PausePosition         = PAUSE_POSITION_CN;
+	  machine_menu.WifiSettings          = WIFI_SETTINGS_CN;
+    machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_CN;
@@ -286,6 +286,12 @@ void machine_setting_disp() {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_T_CN;
     MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_T_CN;
     MachinePara_menu.TemperatureSetting = TEMPERATURE_CONFIG_T_CN;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_CN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_CN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_CN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_CN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_T_CN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_T_CN;
 
@@ -334,13 +340,12 @@ void machine_setting_disp() {
     machine_menu.opened           = ENDSTOP_OPENED_T_CN;
     machine_menu.closed           = ENDSTOP_CLOSED_T_CN;
 
-    machine_menu.FilamentConfTitle = FILAMENT_CONF_TITLE_T_CN;
-    machine_menu.InTemperature     = FILAMENT_IN_TEMPERATURE_T_CN;
-    machine_menu.InLength          = FILAMENT_IN_LENGTH_T_CN;
-    machine_menu.InSpeed           = FILAMENT_IN_SPEED_T_CN;
-    machine_menu.OutTemperature    = FILAMENT_OUT_TEMPERATURE_T_CN;
-    machine_menu.OutLength         = FILAMENT_OUT_LENGTH_T_CN;
-    machine_menu.OutSpeed          = FILAMENT_OUT_SPEED_T_CN;
+    machine_menu.FilamentConfTitle   = FILAMENT_CONF_TITLE_T_CN;
+    machine_menu.InLength            = FILAMENT_IN_LENGTH_T_CN;
+    machine_menu.InSpeed             = FILAMENT_IN_SPEED_T_CN;
+    machine_menu.FilamentTemperature = FILAMENT_TEMPERATURE_T_CN;
+    machine_menu.OutLength           = FILAMENT_OUT_LENGTH_T_CN;
+    machine_menu.OutSpeed            = FILAMENT_OUT_SPEED_T_CN;
 
     machine_menu.LevelingParaConfTitle = LEVELING_CONF_TITLE_T_CN;
     machine_menu.LevelingParaConf      = LEVELING_PARA_CONF_T_CN;
@@ -395,17 +400,18 @@ void machine_setting_disp() {
     machine_menu.HotbedMinTemperature = HOTBED_MIN_TEMPERATURE_T_CN;
     machine_menu.HotbedMaxTemperature = HOTBED_MAX_TEMPERATURE_T_CN;
 
-    machine_menu.MotorConfTitle   = MOTOR_CONF_TITLE_T_CN;
-    machine_menu.MaxFeedRateConf  = MAXFEEDRATE_CONF_T_CN;
-    machine_menu.AccelerationConf = ACCELERATION_CONF_T_CN;
-    machine_menu.JerkConf         = JERKCONF_T_CN;
-    machine_menu.StepsConf        = STEPSCONF_T_CN;
-    machine_menu.TMCcurrentConf   = TMC_CURRENT_T_CN;
-    machine_menu.TMCStepModeConf  = TMC_STEP_MODE_T_CN;
-    machine_menu.MotorDirConf     = MOTORDIRCONF_T_CN;
-    machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_T_CN;
-    machine_menu.PausePosition    = PAUSE_POSITION_T_CN;
-	  machine_menu.WifiSettings     = WIFI_SETTINGS_T_CN;
+    machine_menu.MotorConfTitle        = MOTOR_CONF_TITLE_T_CN;
+    machine_menu.MaxFeedRateConf       = MAXFEEDRATE_CONF_T_CN;
+    machine_menu.AccelerationConf      = ACCELERATION_CONF_T_CN;
+    machine_menu.JerkConf              = JERKCONF_T_CN;
+    machine_menu.StepsConf             = STEPSCONF_T_CN;
+    machine_menu.TMCcurrentConf        = TMC_CURRENT_T_CN;
+    machine_menu.TMCStepModeConf       = TMC_STEP_MODE_T_CN;
+    machine_menu.MotorDirConf          = MOTORDIRCONF_T_CN;
+    machine_menu.HomeFeedRateConf      = HOMEFEEDRATECONF_T_CN;
+    machine_menu.PausePosition         = PAUSE_POSITION_T_CN;
+	  machine_menu.WifiSettings          = WIFI_SETTINGS_T_CN;
+    machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_T_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_T_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_T_CN;
@@ -507,6 +513,12 @@ void machine_setting_disp() {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_EN;
     MachinePara_menu.MachineSetting     = MACHINE_TYPE_CNOFIG_EN;
     MachinePara_menu.TemperatureSetting = TEMPERATURE_CONFIG_EN;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_T_CN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_T_CN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_T_CN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_T_CN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_T_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_EN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_EN;
 
@@ -555,13 +567,12 @@ void machine_setting_disp() {
     machine_menu.opened           = ENDSTOP_OPENED_EN;
     machine_menu.closed           = ENDSTOP_CLOSED_EN;
 
-    machine_menu.FilamentConfTitle = FILAMENT_CONF_TITLE_EN;
-    machine_menu.InTemperature     = FILAMENT_IN_TEMPERATURE_EN;
-    machine_menu.InLength          = FILAMENT_IN_LENGTH_EN;
-    machine_menu.InSpeed           = FILAMENT_IN_SPEED_EN;
-    machine_menu.OutTemperature    = FILAMENT_OUT_TEMPERATURE_EN;
-    machine_menu.OutLength         = FILAMENT_OUT_LENGTH_EN;
-    machine_menu.OutSpeed          = FILAMENT_OUT_SPEED_EN;
+    machine_menu.FilamentConfTitle   = FILAMENT_CONF_TITLE_EN;
+    machine_menu.InLength            = FILAMENT_IN_LENGTH_EN;
+    machine_menu.InSpeed             = FILAMENT_IN_SPEED_EN;
+    machine_menu.FilamentTemperature = FILAMENT_TEMPERATURE_EN;
+    machine_menu.OutLength           = FILAMENT_OUT_LENGTH_EN;
+    machine_menu.OutSpeed            = FILAMENT_OUT_SPEED_EN;
 
     machine_menu.LevelingParaConfTitle = LEVELING_CONF_TITLE_EN;
     machine_menu.LevelingParaConf      = LEVELING_PARA_CONF_EN;
@@ -616,17 +627,18 @@ void machine_setting_disp() {
     machine_menu.HotbedMinTemperature = HOTBED_MIN_TEMPERATURE_EN;
     machine_menu.HotbedMaxTemperature = HOTBED_MAX_TEMPERATURE_EN;
 
-    machine_menu.MotorConfTitle   = MOTOR_CONF_TITLE_EN;
-    machine_menu.MaxFeedRateConf  = MAXFEEDRATE_CONF_EN;
-    machine_menu.AccelerationConf = ACCELERATION_CONF_EN;
-    machine_menu.JerkConf         = JERKCONF_EN;
-    machine_menu.StepsConf        = STEPSCONF_EN;
-    machine_menu.TMCcurrentConf   = TMC_CURRENT_EN;
-    machine_menu.TMCStepModeConf  = TMC_STEP_MODE_EN;
-    machine_menu.MotorDirConf     = MOTORDIRCONF_EN;
-    machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_EN;
-    machine_menu.PausePosition    = PAUSE_POSITION_EN;
-    machine_menu.WifiSettings     = WIFI_SETTINGS_EN;
+    machine_menu.MotorConfTitle        = MOTOR_CONF_TITLE_EN;
+    machine_menu.MaxFeedRateConf       = MAXFEEDRATE_CONF_EN;
+    machine_menu.AccelerationConf      = ACCELERATION_CONF_EN;
+    machine_menu.JerkConf              = JERKCONF_EN;
+    machine_menu.StepsConf             = STEPSCONF_EN;
+    machine_menu.TMCcurrentConf        = TMC_CURRENT_EN;
+    machine_menu.TMCStepModeConf       = TMC_STEP_MODE_EN;
+    machine_menu.MotorDirConf          = MOTORDIRCONF_EN;
+    machine_menu.HomeFeedRateConf      = HOMEFEEDRATECONF_EN;
+    machine_menu.PausePosition         = PAUSE_POSITION_EN;
+    machine_menu.WifiSettings          = WIFI_SETTINGS_EN;
+    machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_EN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_EN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_EN;
@@ -728,6 +740,12 @@ void machine_setting_disp() {
 
 void disp_language_init() {
   preheat_menu.value_state = TEXT_VALUE;
+
+    machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_EN;
+    machine_menu.X_Sensitivity              = X_SENSITIVITY_EN;
+    machine_menu.Y_Sensitivity              = Y_SENSITIVITY_EN;
+    machine_menu.Z_Sensitivity              = Z_SENSITIVITY_EN;
+    machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_EN;
   preheat_menu.step_1c     = TEXT_1C;
   preheat_menu.step_5c     = TEXT_5C;
   preheat_menu.step_10c    = TEXT_10C;
