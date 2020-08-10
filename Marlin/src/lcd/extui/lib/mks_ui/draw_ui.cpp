@@ -1037,7 +1037,7 @@ void GUI_RefreshPage() {
       }
       */
       break;
-
+    #if USE_WIFI_FUNCTION
     #if ENABLED(USE_WIFI_FUNCTION)
       case WIFI_UI:
         if (temperature_change_frequency == 1) {
@@ -1060,6 +1060,7 @@ void GUI_RefreshPage() {
     case DIALOG_UI:
       filament_dialog_handle();
       TERN_(USE_WIFI_FUNCTION, wifi_scan_handle());
+      #endif //USE_WIFI_FUNCTION
       break;
     case MESHLEVELING_UI:
       /*disp_zpos();*/
@@ -1071,6 +1072,7 @@ void GUI_RefreshPage() {
         if (printing_rate_update_flag == 1) {
           disp_wifi_list();
           printing_rate_update_flag = 0;
+      
         }
       #endif
       break;

@@ -232,4 +232,6 @@ void lv_clear_wifi_list() {
 
 #endif // USE_WIFI_FUNCTION
 
+#endif //USE_WIFI_FUNCTION
+
 #endif // HAS_TFT_LVGL_UI

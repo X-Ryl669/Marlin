@@ -28,7 +28,6 @@
 #if SERIAL_PORT_2 != -1
   #error "SERIAL_PORT_2 must be set to -1 with HAS_TFT_LVGL_UI and USE_WIFI_FUNCTION."
 #endif
-
 #define WIFI_BAUDRATE          115200
 #define WIFI_UPLOAD_BAUDRATE  1958400
 #define USART_SAFE_INSERT

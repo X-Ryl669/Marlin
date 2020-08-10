@@ -25,6 +25,7 @@
 
 #include "string.h"
 #include "draw_ui.h"
+#include "draw_ui.h"
 #include "pic_manager.h"
 #include "draw_ready_print.h"
 #include "mks_hardware_test.h"

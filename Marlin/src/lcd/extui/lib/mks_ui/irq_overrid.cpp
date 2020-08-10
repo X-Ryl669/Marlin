@@ -29,6 +29,8 @@
 
 #include "wifiSerial.h"
 
+#if USE_WIFI_FUNCTION
+
 #include <libmaple/libmaple.h>
 #include <libmaple/gpio.h>
 #include <libmaple/timer.h>
@@ -64,6 +66,8 @@ void __irq_usart1(void) {
 #ifdef __cplusplus
   } /* C-declarations for C++ */
 #endif
+
+#endif //USE_WIFI_FUNCTION
 
 #endif // USE_WIFI_FUNCTION
 #endif // HAS_TFT_LVGL_UI

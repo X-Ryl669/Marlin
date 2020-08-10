@@ -521,6 +521,7 @@ void lv_draw_dialog(uint8_t type) {
 	lv_label_set_text(labelDialog, DIALOG_UPDATE_NO_DEVICE_EN);
 	lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
   }
+  #if USE_WIFI_FUNCTION
   else if(uiCfg.dialogType == DIALOG_TYPE_UPLOAD_FILE) {
   	if(upload_result == 1) {
 		lv_label_set_text(labelDialog, DIALOG_UPLOAD_ING_EN);
@@ -533,7 +534,7 @@ void lv_draw_dialog(uint8_t type) {
 	else if(upload_result == 3) {
 		char buf[200];
 		int _index = 0;
-			
+        
 		memset(buf,0,sizeof(200));
 			
 		strcpy(buf, DIALOG_UPLOAD_FINISH_EN);

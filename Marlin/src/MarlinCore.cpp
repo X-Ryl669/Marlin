@@ -982,6 +982,14 @@ void setup() {
     while (/*!WIFISERIAL && */PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
   #endif
 
+  #if USE_WIFI_FUNCTION
+  #define SERIAL_PORT_2 -1 
+	mks_esp_wifi_init();
+	WIFISERIAL.begin(WIFI_BAUDRATE);
+	serial_connect_timeout = millis() + 1000UL;
+  while (/*!WIFISERIAL && */PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
+	#endif
+
   SETUP_RUN(HAL_init());
 
   #if HAS_L64XX

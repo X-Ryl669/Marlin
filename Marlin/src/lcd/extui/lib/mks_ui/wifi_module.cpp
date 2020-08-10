@@ -1923,5 +1923,7 @@ int readWifiBuf(int8_t *buf, int32_t len) {
   return i;
 }
 
+#endif //USE_WIFI_FUNCTION
+
 #endif // USE_WIFI_FUNCTION
 #endif // HAS_TFT_LVGL_UI

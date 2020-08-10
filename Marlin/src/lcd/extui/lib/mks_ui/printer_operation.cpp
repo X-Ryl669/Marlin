@@ -157,6 +157,7 @@ void printer_state_polling() {
     filament_check();
 
   TERN_(USE_WIFI_FUNCTION, wifi_looping());
+  #endif
 }
 
 void filament_pin_setup() {

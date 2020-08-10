@@ -81,5 +81,7 @@ void lv_draw_wifi_tips(void) {
 
 void lv_clear_wifi_tips() { lv_obj_del(scr); }
 
+#endif //USE_WIFI_FUNCTION
+
 #endif // USE_WIFI_FUNCTION
 #endif // HAS_TFT_LVGL_UI
