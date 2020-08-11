@@ -119,9 +119,11 @@ void gCfgItems_init() {
   gCfgItems.pausePosY        = -1;
   gCfgItems.pausePosZ        = 5;
   gCfgItems.cloud_enable = true;
-  gCfgItems.wifi_mode_sel = STA_MODEL;
-  gCfgItems.fileSysType = FILE_SYS_SD;
-  gCfgItems.wifi_type = ESP_WIFI;
+  #if USE_WIFI_FUNCTION
+    gCfgItems.wifi_mode_sel = STA_MODEL;
+    gCfgItems.fileSysType   = FILE_SYS_SD;
+    gCfgItems.wifi_type     = ESP_WIFI;
+  #endif  //USE_WIFI_FUNCTION
   W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems.spi_flash_flag, VAR_INF_ADDR, sizeof(gCfgItems.spi_flash_flag));
   if (gCfgItems.spi_flash_flag == GCFG_FLAG_VALUE) {
     W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems, VAR_INF_ADDR, sizeof(gCfgItems));
@@ -442,8 +444,10 @@ char *getDispText(int index) {
       strcpy(public_buf_l, tool_menu.title);
       break;
     case WIFI_LIST_UI:
-	  strcpy(public_buf_l, list_menu.title);			
-      break;
+      #if USE_WIFI_FUNCTION
+	      strcpy(public_buf_l, list_menu.title);			
+        break;
+      #endif  //USE_WIFI_FUNCTION
     case MACHINE_PARA_UI:
       strcpy(public_buf_l, MachinePara_menu.title);
       break;
@@ -1031,13 +1035,14 @@ void GUI_RefreshPage() {
       }
       */
       break;
-
-    case WIFI_UI:
-      if(temperature_change_frequency == 1) {					
-	  	disp_wifi_state();
-	  	temperature_change_frequency = 0;
-	  }
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_UI:
+        if(temperature_change_frequency == 1) {					
+        disp_wifi_state();
+        temperature_change_frequency = 0;
+      }
+        break;
+    #endif  //USE_WIFI_FUNCTION
     case BIND_UI:
       /*refresh_bind_ui();*/
       break;
@@ -1050,7 +1055,9 @@ void GUI_RefreshPage() {
       break;
     case DIALOG_UI:
       filament_dialog_handle();
-      wifi_scan_handle();
+      #if USE_WIFI_FUNCTION
+        wifi_scan_handle(); 
+      #endif //USE_WIFI_FUNCTION
       break;
     case MESHLEVELING_UI:
       /*disp_zpos();*/
@@ -1058,15 +1065,19 @@ void GUI_RefreshPage() {
     case HARDWARE_TEST_UI:
       break;
     case WIFI_LIST_UI:
-      if(printing_rate_update_flag == 1) {
-	  	disp_wifi_list();
-	  	printing_rate_update_flag = 0;
-	  }
+      #if USE_WIFI_FUNCTION
+        if(printing_rate_update_flag == 1) {
+        disp_wifi_list();
+        printing_rate_update_flag = 0;
+      
+	      }
+      #endif //USE_WIFI_FUNCTION
       break;
     case KEY_BOARD_UI:
       /*update_password_disp();
       update_join_state_disp();*/
       break;
+    #if USE_WIFI_FUNCTION
     case WIFI_TIPS_UI:
       switch(wifi_tips_type) {
 	  case TIPS_TYPE_JOINING:
@@ -1116,6 +1127,7 @@ void GUI_RefreshPage() {
 			   	break;
 	            }
       break;
+    #endif //USE_WIFI_FUNCTION
     case BABY_STEP_UI:
       if (temperature_change_frequency == 1) {
         temperature_change_frequency = 0;
@@ -1187,9 +1199,11 @@ void clear_cur_ui() {
     case DISK_UI:
       //Clear_Disk();
       break;
-    case WIFI_UI:
-			lv_clear_wifi();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_UI:
+        lv_clear_wifi();
+        break;
+    #endif
     case MORE_UI:
       //Clear_more();
       break;
@@ -1226,15 +1240,19 @@ void clear_cur_ui() {
     case HARDWARE_TEST_UI:
       //Clear_Hardwaretest();
       break;
-    case WIFI_LIST_UI:
-      lv_clear_wifi_list();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_LIST_UI:
+          lv_clear_wifi_list();
+        break;
+    #endif //USE_WIFI_FUNCTION
     case KEY_BOARD_UI:
 	  lv_clear_keyboard();
       break;
-	case WIFI_TIPS_UI:
-	lv_clear_wifi_tips();
-      break;
+    #if USE_WIFI_FUNCTION
+      case WIFI_TIPS_UI:
+        lv_clear_wifi_tips();
+        break;
+    #endif
     case MACHINE_PARA_UI:
       lv_clear_machine_para();
       break;
@@ -1418,9 +1436,11 @@ void draw_return_ui() {
       case DISK_UI:
         //draw_Disk();
         break;
-      case WIFI_UI:
-	      lv_draw_wifi();
-        break;
+      #if USE_WIFI_FUNCTION
+        case WIFI_UI:
+          lv_draw_wifi();
+          break;
+      #endif  //USE_WIFI_FUNCTION
       case MORE_UI:
         //draw_More();
         break;
@@ -1453,13 +1473,17 @@ void draw_return_ui() {
         //draw_Hardwaretest();
         break;
       case WIFI_LIST_UI:
+        #if USE_WIFI_FUNCTION
 	    lv_draw_wifi_list();
+        #endif //USE_WIFI_FUNCTION
         break;
       case KEY_BOARD_UI:
 	    lv_draw_keyboard();
         break;
 		case WIFI_TIPS_UI:
-	    lv_draw_wifi_tips();
+        #if USE_WIFI_FUNCTION
+	      lv_draw_wifi_tips();
+        #endif
         break;
       case MACHINE_PARA_UI:
         lv_draw_machine_para();
@@ -1610,7 +1634,9 @@ void LV_TASK_HANDLER() {
     disp_pre_gcode(2, 36);
   #endif
   GUI_RefreshPage();
-  get_wifi_commands();
+  #if USE_WIFI_FUNCTION
+    get_wifi_commands();
+  #endif  //USE_WIFI_FUNCTION
   //sd_detection();
 }
 
