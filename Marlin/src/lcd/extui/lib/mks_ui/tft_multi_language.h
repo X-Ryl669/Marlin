@@ -238,6 +238,7 @@ typedef struct machine_common_disp{
   const char *EnablePinsInvert;
   const char *PausePosition;
   const char *WifiSettings;
+  const char *EncoderSettings;
 
   const char *Z2ConfTitle;
   const char *Z2Enable;
@@ -281,6 +282,9 @@ typedef struct machine_common_disp{
 	const char *wifiConfig;
 	const char *wifiEdit;
 	const char *wifiConfigTips;
+
+  const char *EncoderConfTitle;
+  const char *EncoderConfText;
 
 } machine_common_def;
 
