@@ -119,6 +119,7 @@ void lv_draw_pause_position(void) {
   lv_btn_set_style(buttonXValue, LV_BTN_STYLE_PR, &style_para_value);
   lv_obj_set_event_cb_mks(buttonXValue, event_handler, ID_PAUSE_X, NULL, 0);
   labelXValue = lv_label_create(buttonXValue, NULL);
+  
 
   line1 = lv_line_create(scr, NULL);
   lv_ex_line(line1, line_points[0]);
@@ -135,6 +136,7 @@ void lv_draw_pause_position(void) {
   lv_btn_set_style(buttonYValue, LV_BTN_STYLE_REL, &style_para_value);
   lv_btn_set_style(buttonYValue, LV_BTN_STYLE_PR, &style_para_value);
   labelYValue = lv_label_create(buttonYValue, NULL);
+  
 
   line2 = lv_line_create(scr, NULL);
   lv_ex_line(line2, line_points[1]);
@@ -151,11 +153,13 @@ void lv_draw_pause_position(void) {
   lv_btn_set_style(buttonZValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonZValue, LV_BTN_STYLE_PR, &style_para_value);
   labelZValue = lv_label_create(buttonZValue, NULL);
+  
 
   line3 = lv_line_create(scr, NULL);
   lv_ex_line(line3, line_points[2]);
 
   buttonBack = lv_btn_create(scr, NULL);
+
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_obj_set_size(buttonBack, PARA_UI_BACK_BTN_X_SIZE, PARA_UI_BACK_BTN_Y_SIZE);
   lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_PAUSE_RETURN, NULL, 0);

@@ -291,6 +291,9 @@ typedef struct machine_common_disp{
   const char *EncoderConfTitle;
   const char *EncoderConfText;
 
+  const char *EncoderConfTitle;
+  const char *EncoderConfText;
+
 } machine_common_def;
 
 extern machine_common_def machine_menu;

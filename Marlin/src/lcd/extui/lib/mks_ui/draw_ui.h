@@ -98,6 +98,7 @@
 #include "draw_homing_sensitivity_settings.h"
 #include "draw_baby_stepping.h"
 #include "draw_wifi_tips.h"
+#include "draw_encoder_settings.h"
 
 #include "../../inc/MarlinConfigPre.h"
 #define FILE_SYS_USB  0
@@ -219,6 +220,7 @@ typedef struct {
           para_ui_page:1,
           configWifi:1,
           command_send:1,
+  bool  encoder_enable;
           filament_load_heat_flg:1,
           filament_heat_completed_load:1,
           filament_unload_heat_flg:1,

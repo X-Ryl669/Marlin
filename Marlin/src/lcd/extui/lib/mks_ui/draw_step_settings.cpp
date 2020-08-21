@@ -166,6 +166,7 @@ void lv_draw_step_settings(void) {
     lv_btn_set_style(buttonXValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonXValue, LV_BTN_STYLE_PR, &style_para_value);
     labelXValue = lv_label_create(buttonXValue, NULL);
+    
 
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
@@ -182,6 +183,8 @@ void lv_draw_step_settings(void) {
     lv_btn_set_style(buttonYValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonYValue, LV_BTN_STYLE_PR, &style_para_value);
     labelYValue = lv_label_create(buttonYValue, NULL);
+    
+
 
     line2 = lv_line_create(scr, NULL);
     lv_ex_line(line2, line_points[1]);
@@ -198,7 +201,7 @@ void lv_draw_step_settings(void) {
     lv_btn_set_style(buttonZValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonZValue, LV_BTN_STYLE_PR, &style_para_value);
     labelZValue = lv_label_create(buttonZValue, NULL);
-
+    
     line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3, line_points[2]);
 
@@ -214,6 +217,7 @@ void lv_draw_step_settings(void) {
     lv_btn_set_style(buttonE0Value, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonE0Value, LV_BTN_STYLE_PR, &style_para_value);
     labelE0Value = lv_label_create(buttonE0Value, NULL);
+    
 
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
@@ -232,6 +236,8 @@ void lv_draw_step_settings(void) {
         lv_group_add_obj(g, buttonTurnPage);
       }
     #endif
+	}
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
   }
   else {
     labelE1Text = lv_label_create(scr, NULL);
@@ -246,6 +252,7 @@ void lv_draw_step_settings(void) {
     lv_btn_set_style(buttonE1Value, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonE1Value, LV_BTN_STYLE_PR, &style_para_value);
     labelE1Value = lv_label_create(buttonE1Value, NULL);
+    
 
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
@@ -261,6 +268,8 @@ void lv_draw_step_settings(void) {
         lv_group_add_obj(g, buttonTurnPage);
       }
     #endif
+	}
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
   }
 
   lv_obj_set_pos(buttonTurnPage, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y);
@@ -270,6 +279,11 @@ void lv_draw_step_settings(void) {
   buttonBack = lv_btn_create(scr, NULL);
   lv_btn_set_style(buttonBack, LV_BTN_STYLE_REL, &style_para_back);
   lv_btn_set_style(buttonBack, LV_BTN_STYLE_PR, &style_para_back);
+  #if BUTTONS_EXIST(EN1, EN2, ENC)
+	if (gCfgItems.encoder_enable == true) {
+		lv_group_add_obj(g, buttonBack);
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_obj_set_size(buttonBack, PARA_UI_BACK_BTN_X_SIZE, PARA_UI_BACK_BTN_Y_SIZE);
   lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_STEP_RETURN, NULL, 0);

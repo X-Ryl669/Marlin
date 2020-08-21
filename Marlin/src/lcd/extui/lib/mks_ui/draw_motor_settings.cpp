@@ -185,11 +185,13 @@ void lv_draw_motor_settings(void) {
   lv_btn_set_style(buttonSteps, LV_BTN_STYLE_PR, &tft_style_label_pre);   /*Set the button's pressed style*/
   lv_btn_set_layout(buttonSteps, LV_LAYOUT_OFF);
   labelSteps = lv_label_create(buttonSteps, NULL);                        /*Add a label to the button*/
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonSteps);
   #endif
 
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+  
   buttonStepsNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonStepsNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y + PARA_UI_ARROW_V);
   lv_obj_set_event_cb_mks(buttonStepsNarrow, event_handler, ID_MOTOR_STEPS_ARROW, NULL, 0);
@@ -216,6 +218,8 @@ void lv_draw_motor_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonSensitivity);
     #endif
+
+   #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     buttonSensitivityNarrow = lv_imgbtn_create(scr, NULL);
     lv_obj_set_pos(buttonSensitivityNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y * 2 + PARA_UI_ARROW_V);
@@ -244,6 +248,8 @@ void lv_draw_motor_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonTMCcurrent);
     #endif
+	}
+   #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     buttonTMCcurrentNarrow = lv_imgbtn_create(scr, NULL);
     lv_obj_set_pos(buttonTMCcurrentNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, TERN(USE_SENSORLESS, PARA_UI_POS_Y * 3, PARA_UI_POS_Y * 2) + PARA_UI_ARROW_V);
@@ -270,11 +276,13 @@ void lv_draw_motor_settings(void) {
       lv_btn_set_style(buttonStepMode, LV_BTN_STYLE_PR, &tft_style_label_pre);  /*Set the button's pressed style*/
       lv_btn_set_layout(buttonStepMode, LV_LAYOUT_OFF);
       labelStepMode = lv_label_create(buttonStepMode, NULL);                    /*Add a label to the button*/
-
+      
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonStepMode);
       #endif
 
+     #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+	  
       buttonStepModeNarrow = lv_imgbtn_create(scr, NULL);
       lv_obj_set_pos(buttonStepModeNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, TERN(USE_SENSORLESS, PARA_UI_POS_Y * 4, PARA_UI_POS_Y * 3) + PARA_UI_ARROW_V);
       lv_obj_set_event_cb_mks(buttonStepModeNarrow, event_handler, ID_MOTOR_STEP_MODE_ARROW, NULL, 0);
@@ -305,6 +313,12 @@ void lv_draw_motor_settings(void) {
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
   label_Back = lv_label_create(buttonBack, NULL);
+  #if BUTTONS_EXIST(EN1, EN2, ENC)
+	if (gCfgItems.encoder_enable == true) {
+		lv_group_add_obj(g, buttonBack);
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+  
 
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);

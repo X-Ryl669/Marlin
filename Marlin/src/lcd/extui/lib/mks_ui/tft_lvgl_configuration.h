@@ -47,6 +47,17 @@ extern void LCD_WriteRAM_Prepare(void);
 extern void lcd_draw_logo();
 extern void lv_encoder_pin_init();
 extern void lv_update_encoder();
+lv_fs_res_t spi_flash_open_cb (lv_fs_drv_t * drv, void * file_p, const char * path, lv_fs_mode_t mode);
+lv_fs_res_t spi_flash_close_cb (lv_fs_drv_t * drv, void * file_p);
+lv_fs_res_t spi_flash_read_cb (lv_fs_drv_t * drv, void * file_p, void * buf, uint32_t btr, uint32_t * br);
+lv_fs_res_t spi_flash_seek_cb(lv_fs_drv_t * drv, void * file_p, uint32_t pos);
+lv_fs_res_t spi_flash_tell_cb(lv_fs_drv_t * drv, void * file_p, uint32_t * pos_p);
+
+lv_fs_res_t sd_open_cb (lv_fs_drv_t * drv, void * file_p, const char * path, lv_fs_mode_t mode);
+lv_fs_res_t sd_close_cb (lv_fs_drv_t * drv, void * file_p);
+lv_fs_res_t sd_read_cb (lv_fs_drv_t * drv, void * file_p, void * buf, uint32_t btr, uint32_t * br);
+lv_fs_res_t sd_seek_cb(lv_fs_drv_t * drv, void * file_p, uint32_t pos);
+lv_fs_res_t sd_tell_cb(lv_fs_drv_t * drv, void * file_p, uint32_t * pos_p);
 
 extern lv_fs_res_t spi_flash_open_cb (lv_fs_drv_t * drv, void * file_p, const char * path, lv_fs_mode_t mode);
 extern lv_fs_res_t spi_flash_close_cb (lv_fs_drv_t * drv, void * file_p);

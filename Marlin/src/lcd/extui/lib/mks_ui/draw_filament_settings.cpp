@@ -166,6 +166,7 @@ void lv_draw_filament_settings(void) {
     lv_btn_set_style(buttonInLengthValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonInLengthValue, LV_BTN_STYLE_PR, &style_para_value);
     labelInLengthValue = lv_label_create(buttonInLengthValue, NULL);
+    
 
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
@@ -182,6 +183,7 @@ void lv_draw_filament_settings(void) {
     lv_btn_set_style(buttonInSpeedValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonInSpeedValue, LV_BTN_STYLE_PR, &style_para_value);
     labelInSpeedValue = lv_label_create(buttonInSpeedValue, NULL);
+    
 
     line2 = lv_line_create(scr, NULL);
     lv_ex_line(line2, line_points[1]);
@@ -198,6 +200,7 @@ void lv_draw_filament_settings(void) {
     lv_btn_set_style(buttonOutLengthValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonOutLengthValue, LV_BTN_STYLE_PR, &style_para_value);
     labelOutLengthValue = lv_label_create(buttonOutLengthValue, NULL);
+    
 
     line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3, line_points[2]);
@@ -214,6 +217,7 @@ void lv_draw_filament_settings(void) {
     lv_btn_set_style(buttonOutSpeedValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonOutSpeedValue, LV_BTN_STYLE_PR, &style_para_value);
     labelOutSpeedValue = lv_label_create(buttonOutSpeedValue, NULL);
+    
 
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
@@ -246,6 +250,7 @@ void lv_draw_filament_settings(void) {
     lv_btn_set_style(buttonTemperValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonTemperValue, LV_BTN_STYLE_PR, &style_para_value);
     labelTemperValue = lv_label_create(buttonTemperValue, NULL);
+    
 
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
@@ -274,10 +279,12 @@ void lv_draw_filament_settings(void) {
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_obj_set_size(buttonBack, PARA_UI_BACK_BTN_X_SIZE, PARA_UI_BACK_BTN_Y_SIZE);
   label_Back = lv_label_create(buttonBack, NULL);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   if (gCfgItems.multiple_language != 0) {
     if (uiCfg.para_ui_page != 1) {

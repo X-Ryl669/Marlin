@@ -205,30 +205,35 @@ void lv_draw_manualLevel(void) {
     lv_imgbtn_set_src(buttonPoint2, LV_BTN_STATE_PR, "F:/bmp_leveling2.bin");
     lv_imgbtn_set_style(buttonPoint2, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPoint2, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonPoint3, event_handler, ID_M_POINT3, NULL, 0);
     lv_imgbtn_set_src(buttonPoint3, LV_BTN_STATE_REL, "F:/bmp_leveling3.bin");
     lv_imgbtn_set_src(buttonPoint3, LV_BTN_STATE_PR, "F:/bmp_leveling3.bin");
+    lv_imgbtn_set_src(buttonPoint3, LV_BTN_STATE_PR, "F:/bmp_leveling3.bin");
     lv_imgbtn_set_style(buttonPoint3, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPoint3, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonPoint4, event_handler, ID_M_POINT4, NULL, 0);
     lv_imgbtn_set_src(buttonPoint4, LV_BTN_STATE_REL, "F:/bmp_leveling4.bin");
     lv_imgbtn_set_src(buttonPoint4, LV_BTN_STATE_PR, "F:/bmp_leveling4.bin");
+    lv_imgbtn_set_src(buttonPoint4, LV_BTN_STATE_PR, "F:/bmp_leveling4.bin");
     lv_imgbtn_set_style(buttonPoint4, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPoint4, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonPoint5, event_handler, ID_M_POINT5, NULL, 0);
     lv_imgbtn_set_src(buttonPoint5, LV_BTN_STATE_REL, "F:/bmp_leveling5.bin");
     lv_imgbtn_set_src(buttonPoint5, LV_BTN_STATE_PR, "F:/bmp_leveling5.bin");
+    lv_imgbtn_set_src(buttonPoint5, LV_BTN_STATE_PR, "F:/bmp_leveling5.bin");
     lv_imgbtn_set_style(buttonPoint5, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPoint5, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_MANUAL_RETURN, NULL, 0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
+    lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+    
   #endif
 
   lv_obj_set_pos(buttonPoint1, INTERVAL_V, titleHeight);

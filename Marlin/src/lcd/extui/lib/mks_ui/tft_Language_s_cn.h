@@ -264,6 +264,9 @@
 #define Z_SENSITIVITY_CN                      "Z轴灵敏度"
 #define Z2_SENSITIVITY_CN                     "Z2轴灵敏度"
 
+#define ENCODER_CONF_TITLE_CN                 "机器参数>旋钮设置"
+#define ENCODER_CONF_TEXT_CN                  "是否使用旋钮功能?"
+
 #define LEVELING_TEXT_CN            "调平"
 #define AUTO_LEVELING_TEXT_CN       "自动调平"
 #define SET_TEXT_CN                 "设置"

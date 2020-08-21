@@ -283,39 +283,45 @@ void lv_draw_language(void) {
     lv_imgbtn_set_src(buttonT_CN, LV_BTN_STATE_PR, "F:/bmp_traditional_cn.bin");
     lv_imgbtn_set_style(buttonT_CN, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonT_CN, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonEN, event_handler, ID_EN, NULL, 0);
     lv_imgbtn_set_src(buttonEN, LV_BTN_STATE_REL, "F:/bmp_english.bin");
     lv_imgbtn_set_src(buttonEN, LV_BTN_STATE_PR, "F:/bmp_english.bin");
+    lv_imgbtn_set_src(buttonEN, LV_BTN_STATE_PR, "F:/bmp_english.bin");
     lv_imgbtn_set_style(buttonEN, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonEN, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonRU, event_handler, ID_RU, NULL, 0);
     lv_imgbtn_set_src(buttonRU, LV_BTN_STATE_REL, "F:/bmp_russian.bin");
     lv_imgbtn_set_src(buttonRU, LV_BTN_STATE_PR, "F:/bmp_russian.bin");
+    lv_imgbtn_set_src(buttonRU, LV_BTN_STATE_PR, "F:/bmp_russian.bin");
     lv_imgbtn_set_style(buttonRU, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonRU, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonES, event_handler, ID_ES, NULL, 0);
     lv_imgbtn_set_src(buttonES, LV_BTN_STATE_REL, "F:/bmp_spanish.bin");
     lv_imgbtn_set_src(buttonES, LV_BTN_STATE_PR, "F:/bmp_spanish.bin");
+    lv_imgbtn_set_src(buttonES, LV_BTN_STATE_PR, "F:/bmp_spanish.bin");
     lv_imgbtn_set_style(buttonES, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonES, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonFR, event_handler, ID_FR, NULL, 0);
     lv_imgbtn_set_src(buttonFR, LV_BTN_STATE_REL, "F:/bmp_french.bin");
     lv_imgbtn_set_src(buttonFR, LV_BTN_STATE_PR, "F:/bmp_french.bin");
+    lv_imgbtn_set_src(buttonFR, LV_BTN_STATE_PR, "F:/bmp_french.bin");
     lv_imgbtn_set_style(buttonFR, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonFR, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonIT, event_handler, ID_IT, NULL, 0);
     lv_imgbtn_set_src(buttonIT, LV_BTN_STATE_REL, "F:/bmp_italy.bin");
     lv_imgbtn_set_src(buttonIT, LV_BTN_STATE_PR, "F:/bmp_italy.bin");
+    lv_imgbtn_set_src(buttonIT, LV_BTN_STATE_PR, "F:/bmp_italy.bin");
     lv_imgbtn_set_style(buttonIT, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonIT, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_L_RETURN, NULL, 0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
+    lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);

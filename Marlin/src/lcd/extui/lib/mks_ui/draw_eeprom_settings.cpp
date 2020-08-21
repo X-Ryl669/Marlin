@@ -143,6 +143,7 @@ void lv_draw_eeprom_settings(void) {
   lv_btn_set_style(buttonRevert, LV_BTN_STYLE_PR, &tft_style_label_pre);    /*Set the button's pressed style*/
   lv_btn_set_layout(buttonRevert, LV_LAYOUT_OFF);
   labelRevert = lv_label_create(buttonRevert, NULL);        /*Add a label to the button*/
+  
 
   buttonRevertNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonRevertNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y + PARA_UI_ARROW_V);
@@ -186,6 +187,7 @@ void lv_draw_eeprom_settings(void) {
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_back70x40.bin");
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+  
 
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);

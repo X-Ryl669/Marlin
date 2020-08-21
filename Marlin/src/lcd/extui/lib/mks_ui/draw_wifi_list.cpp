@@ -144,7 +144,7 @@ void lv_draw_wifi_list(void) {
 
   lv_btn_set_layout(buttonDown, LV_LAYOUT_OFF);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
-
+	
   for (uint8_t i = 0; i < NUMBER_OF_PAGE; i++) {
     buttonWifiN[i] = lv_btn_create(scr, NULL);     /*Add a button the current screen*/
     lv_obj_set_pos(buttonWifiN[i], 0,NAME_BTN_Y*i+10+titleHeight);                            /*Set its position*/
@@ -231,7 +231,5 @@ void lv_clear_wifi_list() {
 }
 
 #endif // USE_WIFI_FUNCTION
-
-#endif //USE_WIFI_FUNCTION
 
 #endif // HAS_TFT_LVGL_UI

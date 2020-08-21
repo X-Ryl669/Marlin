@@ -260,6 +260,9 @@
 #define Z_SENSITIVITY_EN                      "Z Axis Sensitivity"
 #define Z2_SENSITIVITY_EN                     "Z2 Axis Sensitivity"
 
+#define ENCODER_CONF_TITLE_EN                 "Machine Settings>Rotary encoder settings"
+#define ENCODER_CONF_TEXT_EN                  "Is the encoder function used?"
+
 #define OFFSET_TITLE_EN  "Machine Settings>Offset"
 #define OFFSET_X_EN      "X offset"
 #define OFFSET_Y_EN      "Y offset"

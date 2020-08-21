@@ -68,7 +68,7 @@ uint8_t printing_rate_update_flag;
 extern uint8_t once_flag;
 extern uint8_t sel_id;
 extern uint8_t public_buf[512];
-extern uint8_t bmp_public_buf[17 * 1024];
+uint8_t bmp_public_buf[17 * 1024];
 
 extern void LCD_IO_WriteData(uint16_t RegValue);
 
@@ -1654,6 +1654,8 @@ void LV_TASK_HANDLER() {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_update_encoder();
   #endif
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+
 }
 
 #endif // HAS_TFT_LVGL_UI

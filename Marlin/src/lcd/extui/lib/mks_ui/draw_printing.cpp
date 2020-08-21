@@ -201,15 +201,17 @@ void lv_draw_printing(void) {
     lv_obj_set_event_cb_mks(buttonPause, event_handler, ID_PAUSE, NULL, 0);
     lv_imgbtn_set_style(buttonPause, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPause, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonStop, event_handler, ID_STOP, NULL, 0);
     lv_imgbtn_set_src(buttonStop, LV_BTN_STATE_REL, "F:/bmp_stop.bin");
     lv_imgbtn_set_src(buttonStop, LV_BTN_STATE_PR, "F:/bmp_stop.bin");
+    lv_imgbtn_set_src(buttonStop, LV_BTN_STATE_PR, "F:/bmp_stop.bin");
     lv_imgbtn_set_style(buttonStop, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonStop, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonOperat, event_handler, ID_OPTION, NULL, 0);
     lv_imgbtn_set_src(buttonOperat, LV_BTN_STATE_REL, "F:/bmp_operate.bin");
+    lv_imgbtn_set_src(buttonOperat, LV_BTN_STATE_PR, "F:/bmp_operate.bin");
     lv_imgbtn_set_src(buttonOperat, LV_BTN_STATE_PR, "F:/bmp_operate.bin");
     lv_imgbtn_set_style(buttonOperat, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonOperat, LV_BTN_STATE_REL, &tft_style_label_rel);

@@ -233,7 +233,7 @@ static void btn_cancel_event_cb(lv_obj_t * btn, lv_event_t event) {
 }
 
 void lv_draw_dialog(uint8_t type) {
-
+	
   lv_obj_t * btnOk = NULL;
   lv_obj_t * btnCancel = NULL;
   if (disp_state_stack._disp_state[disp_state_stack._disp_index] != DIALOG_UI) {
@@ -296,7 +296,6 @@ void lv_draw_dialog(uint8_t type) {
 	}
   else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_WAITING
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_INSERT
-        || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_HEAT
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_HEAT
   ) {
     btnOk = lv_btn_create(scr, NULL);                   // Add a button the current screen
@@ -660,6 +659,7 @@ void lv_draw_dialog(uint8_t type) {
       if (btnCancel) lv_group_add_obj(g, btnCancel);
     }
   #endif
+  
 }
 
 void filament_sprayer_temp() {

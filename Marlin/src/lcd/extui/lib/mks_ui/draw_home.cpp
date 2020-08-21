@@ -143,9 +143,10 @@ void lv_draw_home(void) {
     lv_imgbtn_set_src(buttonHomeAll, LV_BTN_STATE_PR, "F:/bmp_zeroAll.bin");
     lv_imgbtn_set_style(buttonHomeAll, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonHomeAll, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonHomeX, event_handler, ID_H_X, NULL, 0);
     lv_imgbtn_set_src(buttonHomeX, LV_BTN_STATE_REL, "F:/bmp_zeroX.bin");
+    lv_imgbtn_set_src(buttonHomeX, LV_BTN_STATE_PR, "F:/bmp_zeroX.bin");
     lv_imgbtn_set_src(buttonHomeX, LV_BTN_STATE_PR, "F:/bmp_zeroX.bin");
     lv_imgbtn_set_style(buttonHomeX, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonHomeX, LV_BTN_STATE_REL, &tft_style_label_rel);
@@ -155,30 +156,35 @@ void lv_draw_home(void) {
     lv_imgbtn_set_src(buttonHomeY, LV_BTN_STATE_PR, "F:/bmp_zeroY.bin");
     lv_imgbtn_set_style(buttonHomeY, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonHomeY, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonHomeZ, event_handler, ID_H_Z, NULL, 0);
     lv_imgbtn_set_src(buttonHomeZ, LV_BTN_STATE_REL, "F:/bmp_zeroZ.bin");
     lv_imgbtn_set_src(buttonHomeZ, LV_BTN_STATE_PR, "F:/bmp_zeroZ.bin");
+    lv_imgbtn_set_src(buttonHomeZ, LV_BTN_STATE_PR, "F:/bmp_zeroZ.bin");
     lv_imgbtn_set_style(buttonHomeZ, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonHomeZ, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonOffAll, event_handler,ID_H_OFF_ALL, NULL,0);
     lv_imgbtn_set_src(buttonOffAll, LV_BTN_STATE_REL, "F:/bmp_function1.bin");
     lv_imgbtn_set_src(buttonOffAll, LV_BTN_STATE_PR, "F:/bmp_function1.bin");
+    lv_imgbtn_set_src(buttonOffAll, LV_BTN_STATE_PR, "F:/bmp_function1.bin");
     lv_imgbtn_set_style(buttonOffAll, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonOffAll, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonOffXY, event_handler,ID_H_OFF_XY, NULL,0);
     lv_imgbtn_set_src(buttonOffXY, LV_BTN_STATE_REL, "F:/bmp_function1.bin");
     lv_imgbtn_set_src(buttonOffXY, LV_BTN_STATE_PR, "F:/bmp_function1.bin");
+    lv_imgbtn_set_src(buttonOffXY, LV_BTN_STATE_PR, "F:/bmp_function1.bin");
     lv_imgbtn_set_style(buttonOffXY, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonOffXY, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+    
     lv_obj_set_event_cb_mks(buttonBack, event_handler,ID_H_RETURN, NULL,0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
+    lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+    
   #endif
 
   lv_obj_set_pos(buttonHomeAll, INTERVAL_V, titleHeight);

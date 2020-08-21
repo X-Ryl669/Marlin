@@ -318,12 +318,14 @@ void disp_gcode_icon(uint8_t file_num) {
     lv_imgbtn_set_src(buttonPageDown, LV_BTN_STATE_PR, "F:/bmp_pageDown.bin");
     lv_imgbtn_set_style(buttonPageDown, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonPageDown, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+	
     lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_P_RETURN, NULL, 0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_back.bin");
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_back.bin");
+    lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_back.bin");
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+	
   #endif
 
   lv_obj_set_pos(buttonPageUp, OTHER_BTN_XPIEL * 3 + INTERVAL_V * 4, titleHeight);
@@ -440,6 +442,8 @@ void disp_gcode_icon(uint8_t file_num) {
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonGcode[i]);
       #endif
 
+  	 #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+	  
     #else // !TFT35
     #endif // !TFT35
   }

@@ -148,6 +148,7 @@ void lv_draw_machine_settings(void) {
   lv_btn_set_style(buttonAcceleration, LV_BTN_STYLE_PR, &tft_style_label_pre);  // Set the button's pressed style
   lv_btn_set_layout(buttonAcceleration, LV_LAYOUT_OFF);
   labelAcceleration = lv_label_create(buttonAcceleration, NULL);                // Add a label to the button
+  
 
   buttonAccelerationNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonAccelerationNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y + PARA_UI_ARROW_V);
@@ -170,6 +171,7 @@ void lv_draw_machine_settings(void) {
   lv_btn_set_style(buttonMaxFeedrate, LV_BTN_STYLE_PR, &tft_style_label_pre);   // Set the button's pressed style
   lv_btn_set_layout(buttonMaxFeedrate, LV_LAYOUT_OFF);
   labelMaxFeedrate = lv_label_create(buttonMaxFeedrate, NULL);                  // Add a label to the button
+  
 
   buttonMaxFeedrateNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonMaxFeedrateNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y * 2 + PARA_UI_ARROW_V);
@@ -193,7 +195,8 @@ void lv_draw_machine_settings(void) {
     lv_btn_set_style(buttonJerk, LV_BTN_STYLE_PR, &tft_style_label_pre);        // Set the button's pressed style
     lv_btn_set_layout(buttonJerk, LV_LAYOUT_OFF);
     labelJerk = lv_label_create(buttonJerk, NULL);                              // Add a label to the button
-
+    
+	
     buttonJerkNarrow = lv_imgbtn_create(scr, NULL);
     lv_obj_set_pos(buttonJerkNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y * 3 + PARA_UI_ARROW_V);
     lv_obj_set_event_cb_mks(buttonJerkNarrow, event_handler, ID_MACHINE_JERK_ARROW, NULL, 0);
@@ -213,6 +216,7 @@ void lv_draw_machine_settings(void) {
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_back70x40.bin");
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+  
 
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
@@ -242,6 +246,15 @@ void lv_draw_machine_settings(void) {
       lv_group_add_obj(g, buttonBack);
     }
   #endif
+}
+
+void lv_clear_machine_settings() { 
+	#if BUTTONS_EXIST(EN1, EN2, ENC)
+	if (gCfgItems.encoder_enable == true) {
+		lv_group_remove_all_objs(g);
+	}
+  	#endif // BUTTONS_EXIST(EN1, EN2, ENC)
+	lv_obj_del(scr); 
 }
 
 void lv_clear_machine_settings() {

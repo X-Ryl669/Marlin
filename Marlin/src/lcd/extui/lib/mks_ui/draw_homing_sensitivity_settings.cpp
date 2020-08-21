@@ -140,10 +140,12 @@ void lv_draw_homing_sensitivity_settings(void) {
   lv_btn_set_style(buttonXValue, LV_BTN_STYLE_REL, &style_para_value);
   lv_btn_set_style(buttonXValue, LV_BTN_STYLE_PR, &style_para_value);
   labelXValue = lv_label_create(buttonXValue, NULL);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonXValue);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   line1 = lv_line_create(scr, NULL);
   lv_ex_line(line1, line_points[0]);
@@ -160,10 +162,12 @@ void lv_draw_homing_sensitivity_settings(void) {
   lv_btn_set_style(buttonYValue, LV_BTN_STYLE_REL, &style_para_value);
   lv_btn_set_style(buttonYValue, LV_BTN_STYLE_PR, &style_para_value);
   labelYValue = lv_label_create(buttonYValue, NULL);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonYValue);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   line2 = lv_line_create(scr, NULL);
   lv_ex_line(line2, line_points[1]);
@@ -180,10 +184,12 @@ void lv_draw_homing_sensitivity_settings(void) {
   lv_btn_set_style(buttonZValue, LV_BTN_STYLE_REL, &style_para_value);
   lv_btn_set_style(buttonZValue, LV_BTN_STYLE_PR, &style_para_value);
   labelZValue = lv_label_create(buttonZValue, NULL);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable == true) lv_group_add_obj(g, buttonZValue);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   line3 = lv_line_create(scr, NULL);
   lv_ex_line(line3, line_points[2]);
@@ -201,10 +207,12 @@ void lv_draw_homing_sensitivity_settings(void) {
     lv_btn_set_style(buttonZ2Value, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonZ2Value, LV_BTN_STYLE_PR, &style_para_value);
     labelZ2Value = lv_label_create(buttonZ2Value, NULL);
-
+    
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonZ2Value);
     #endif
+
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
@@ -217,10 +225,12 @@ void lv_draw_homing_sensitivity_settings(void) {
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_obj_set_size(buttonBack, PARA_UI_BACK_BTN_X_SIZE, PARA_UI_BACK_BTN_Y_SIZE);
   label_Back = lv_label_create(buttonBack, NULL);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   if (gCfgItems.multiple_language != 0) {
     ZERO(public_buf_l);

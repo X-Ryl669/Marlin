@@ -303,6 +303,9 @@ void machine_setting_disp() {
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_CN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_CN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_CN;
+
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_CN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_T_CN;
     MachinePara_menu.leveling           = MACHINE_LEVELING_CONFIG_T_CN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_T_CN;
@@ -545,6 +548,9 @@ void machine_setting_disp() {
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_T_CN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_T_CN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_T_CN;
+
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_T_CN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_T_CN;
     MachinePara_menu.MotorSetting       = MOTOR_CONFIG_EN;
     MachinePara_menu.leveling           = MACHINE_LEVELING_CONFIG_EN;
     MachinePara_menu.AdvanceSetting     = ADVANCE_CONFIG_EN;
@@ -788,6 +794,9 @@ void disp_language_init() {
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_EN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_EN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_EN;
+
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_EN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_EN;
   preheat_menu.step_1c     = TEXT_1C;
   preheat_menu.step_5c     = TEXT_5C;
   preheat_menu.step_10c    = TEXT_10C;

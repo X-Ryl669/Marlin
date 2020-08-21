@@ -164,22 +164,25 @@ void lv_draw_filament_change(void) {
   lv_imgbtn_set_style(buttonIn, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonIn, LV_BTN_STATE_REL, &tft_style_label_rel);
   lv_obj_clear_protect(buttonIn, LV_PROTECT_FOLLOW);
-
+  
   lv_obj_set_event_cb_mks(buttonOut, event_handler, ID_FILAMNT_OUT, NULL, 0);
   lv_imgbtn_set_src(buttonOut, LV_BTN_STATE_REL, "F:/bmp_out.bin");
   lv_imgbtn_set_src(buttonOut, LV_BTN_STATE_PR, "F:/bmp_out.bin");
+  lv_imgbtn_set_src(buttonOut, LV_BTN_STATE_PR, "F:/bmp_out.bin");
   lv_imgbtn_set_style(buttonOut, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonOut, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+  
   lv_obj_set_event_cb_mks(buttoType, event_handler, ID_FILAMNT_TYPE, NULL, 0);
   lv_imgbtn_set_style(buttoType, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttoType, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+  
   lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_FILAMNT_RETURN, NULL, 0);
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
+  lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
+  
 
   lv_obj_set_pos(buttonIn, INTERVAL_V, titleHeight);
   lv_obj_set_pos(buttonOut, BTN_X_PIXEL * 3 + INTERVAL_V * 4, titleHeight);
@@ -207,6 +210,14 @@ void lv_draw_filament_change(void) {
     lv_label_set_text(label_Back, common_menu.text_back);
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
   }
+  #if BUTTONS_EXIST(EN1, EN2, ENC)
+	if (gCfgItems.encoder_enable == true) {
+		lv_group_add_obj(g, buttonIn);
+  		lv_group_add_obj(g, buttonOut);
+  		lv_group_add_obj(g, buttoType);
+  		lv_group_add_obj(g, buttonBack);
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) {

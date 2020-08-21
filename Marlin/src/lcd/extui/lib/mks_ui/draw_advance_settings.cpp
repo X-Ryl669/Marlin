@@ -174,6 +174,9 @@ void lv_draw_advance_settings(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonPausePos);
   #endif
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+  
 
   buttonPausePosNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonPausePosNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y + PARA_UI_ARROW_V);
@@ -198,6 +201,12 @@ void lv_draw_advance_settings(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonFilamentSettings);
   #endif
+  
+  #if BUTTONS_EXIST(EN1, EN2, ENC)
+	if (gCfgItems.encoder_enable == true) {
+		lv_group_add_obj(g, buttonFilamentSettings);
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   buttonFilamentSettingsNarrow = lv_imgbtn_create(scr, NULL);
   lv_obj_set_pos(buttonFilamentSettingsNarrow, PARA_UI_POS_X + PARA_UI_SIZE_X, PARA_UI_POS_Y*2 + PARA_UI_ARROW_V);
@@ -224,6 +233,12 @@ void lv_draw_advance_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonWifiSet);
     #endif
+	  
+	  #if BUTTONS_EXIST(EN1, EN2, ENC)
+		if (gCfgItems.encoder_enable == true) {
+			lv_group_add_obj(g, buttonWifiSet);
+		}
+	  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     buttonWifiSetNarrow = lv_imgbtn_create(scr, NULL);
     lv_obj_set_pos(buttonWifiSetNarrow,PARA_UI_POS_X+PARA_UI_SIZE_X,PARA_UI_POS_Y*3+PARA_UI_ARROW_V);
@@ -236,6 +251,50 @@ void lv_draw_advance_settings(void) {
 
     lv_obj_t * line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3,line_points[2]);
+	  #if BUTTONS_EXIST(EN1, EN2, ENC)
+		  buttonEcoder = lv_btn_create(scr, NULL);     /*Add a button the current screen*/
+		  lv_obj_set_pos(buttonEcoder, PARA_UI_POS_X,PARA_UI_POS_Y*4);                            
+		  lv_obj_set_size(buttonEcoder, PARA_UI_SIZE_X,PARA_UI_SIZE_Y);                         
+		  lv_obj_set_event_cb_mks(buttonEcoder, event_handler,ID_ENCODER_SETTINGS,NULL,0);
+		  lv_btn_set_style(buttonEcoder, LV_BTN_STYLE_REL, &tft_style_label_rel);    
+		  lv_btn_set_style(buttonEcoder, LV_BTN_STYLE_PR, &tft_style_label_pre);      
+		  lv_btn_set_layout(buttonEcoder, LV_LAYOUT_OFF);
+		  labelEcoder = lv_label_create(buttonEcoder, NULL);
+		  
+		  #if BUTTONS_EXIST(EN1, EN2, ENC)
+			if (gCfgItems.encoder_enable == true) {
+				lv_group_add_obj(g, buttonEcoder);
+			}
+		  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+
+		  buttonEcoderNarrow = lv_imgbtn_create(scr, NULL);
+		  lv_obj_set_pos(buttonEcoderNarrow,PARA_UI_POS_X+PARA_UI_SIZE_X,PARA_UI_POS_Y*4+PARA_UI_ARROW_V);
+		  lv_obj_set_event_cb_mks(buttonEcoderNarrow, event_handler,ID_ENCODER_SETTINGS_ARROW, NULL,0);	
+		  lv_imgbtn_set_src(buttonEcoderNarrow, LV_BTN_STATE_REL, "F:/bmp_arrow.bin");
+		  lv_imgbtn_set_src(buttonEcoderNarrow, LV_BTN_STATE_PR, "F:/bmp_arrow.bin");	
+		  lv_imgbtn_set_style(buttonEcoderNarrow, LV_BTN_STATE_PR, &tft_style_label_pre);
+		  lv_imgbtn_set_style(buttonEcoderNarrow, LV_BTN_STATE_REL, &tft_style_label_rel);
+		  lv_btn_set_layout(buttonEcoderNarrow, LV_LAYOUT_OFF);
+
+		  lv_obj_t * line4 = lv_line_create(scr, NULL);
+		  lv_ex_line(line4,line_points[3]); 
+	  #endif
+
+  #elif BUTTONS_EXIST(EN1, EN2, ENC)
+	  buttonEcoder = lv_btn_create(scr, NULL);     /*Add a button the current screen*/
+	  lv_obj_set_pos(buttonEcoder, PARA_UI_POS_X,PARA_UI_POS_Y*3);                            
+	  lv_obj_set_size(buttonEcoder, PARA_UI_SIZE_X,PARA_UI_SIZE_Y);                         
+	  lv_obj_set_event_cb_mks(buttonEcoder, event_handler,ID_ENCODER_SETTINGS,NULL,0);
+	  lv_btn_set_style(buttonEcoder, LV_BTN_STYLE_REL, &tft_style_label_rel);    
+	  lv_btn_set_style(buttonEcoder, LV_BTN_STYLE_PR, &tft_style_label_pre);      
+	  lv_btn_set_layout(buttonEcoder, LV_LAYOUT_OFF);
+	  labelEcoder = lv_label_create(buttonEcoder, NULL);
+	  
+	  #if BUTTONS_EXIST(EN1, EN2, ENC)
+		if (gCfgItems.encoder_enable == true) {
+			lv_group_add_obj(g, buttonEcoder);
+		}
+	  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     #if HAS_ROTARY_ENCODER
       buttonEcoder = lv_btn_create(scr, NULL);     /*Add a button the current screen*/
@@ -293,10 +352,12 @@ void lv_draw_advance_settings(void) {
   lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_back70x40.bin");
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
-
+  
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
+
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
@@ -321,6 +382,7 @@ void lv_draw_advance_settings(void) {
       lv_obj_align(labelEcoder, buttonEcoder, LV_ALIGN_IN_LEFT_MID,0, 0);
     #endif
   }
+  
 
 }
 
@@ -329,6 +391,8 @@ void lv_clear_advance_settings() {
     if (gCfgItems.encoder_enable) lv_group_remove_all_objs(g);
   #endif
   lv_obj_del(scr);
+}
+	lv_obj_del(scr); 
 }
 
 #endif // HAS_TFT_LVGL_UI

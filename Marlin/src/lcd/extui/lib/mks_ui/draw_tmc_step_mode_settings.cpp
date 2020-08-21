@@ -299,6 +299,9 @@ void lv_draw_tmc_step_mode_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonXState);
     #endif
+	}
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+    
 
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
@@ -336,6 +339,9 @@ void lv_draw_tmc_step_mode_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonYState);
     #endif
+	}
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+    
 
     line2 = lv_line_create(scr, NULL);
     lv_ex_line(line2, line_points[1]);
@@ -372,7 +378,10 @@ void lv_draw_tmc_step_mode_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonZState);
     #endif
-
+	}
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+    
+	
     line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3, line_points[2]);
 
@@ -411,6 +420,8 @@ void lv_draw_tmc_step_mode_settings(void) {
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonE0State);
     #endif
 
+    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+    
 
     line4 = lv_line_create(scr, NULL);
     lv_ex_line(line4, line_points[3]);
@@ -424,6 +435,10 @@ void lv_draw_tmc_step_mode_settings(void) {
       lv_imgbtn_set_style(buttonTurnPage, LV_BTN_STATE_REL, &tft_style_label_rel);
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonTurnPage);
+		lv_group_add_obj(g, buttonTurnPage);
+	}
+      #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+      
       #endif
     //#endif
   }
@@ -461,6 +476,9 @@ void lv_draw_tmc_step_mode_settings(void) {
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonE1State);
       #endif
+	}
+      #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+      
 
       line1 = lv_line_create(scr, NULL);
       lv_ex_line(line1, line_points[0]);
@@ -488,6 +506,9 @@ void lv_draw_tmc_step_mode_settings(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
+	}
+  #endif // BUTTONS_EXIST(EN1, EN2, ENC)
+  
 
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
