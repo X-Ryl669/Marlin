@@ -288,6 +288,10 @@ void lv_draw_printing(void) {
   lv_obj_set_style(labelZpos, &tft_style_label_rel);
   lv_obj_set_pos(labelZpos, 395, 96);
 
+  labelZpos = lv_label_create(scr, NULL);
+  lv_obj_set_style(labelZpos, &tft_style_label_rel);
+  lv_obj_set_pos(labelZpos, 395, 96);
+
   labelPause  = lv_label_create(buttonPause, NULL);
   labelStop   = lv_label_create(buttonStop, NULL);
   labelOperat = lv_label_create(buttonOperat, NULL);

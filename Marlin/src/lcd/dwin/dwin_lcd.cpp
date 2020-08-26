@@ -207,6 +207,7 @@ void DWIN_Draw_Rectangle(uint8_t mode, uint16_t color,
 //  color: Fill color
 //  xStart/yStart: upper left point
 //  xEnd/yEnd: bottom right point
+//  xEnd/yEnd: bottom right point
 void DWIN_Frame_AreaMove(uint8_t mode, uint8_t dir, uint16_t dis,
                          uint16_t color, uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd) {
   size_t i = 0;
@@ -245,6 +246,19 @@ void DWIN_Draw_String(bool widthAdjust, bool bShow, uint8_t size,
   DWIN_Word(i, x);
   DWIN_Word(i, y);
   DWIN_String(i, string);
+  DWIN_Send(i);
+}
+
+// Draw a positive integer
+//  bShow: true=display background color; false=don't display background color
+//  zeroFill: true=zero fill; false=no zero fill
+//  zeroMode: 1=leading 0 displayed as 0; 0=leading 0 displayed as a space
+//  size: Font size
+//  color: Character color
+//  bColor: Background color
+//  iNum: Number of digits
+//  x/y: Upper-left coordinate
+//  value: Integer value
   DWIN_Send(i);
 }
 

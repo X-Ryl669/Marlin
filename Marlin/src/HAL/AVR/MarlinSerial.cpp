@@ -792,7 +792,23 @@ MarlinSerial<MarlinSerialCfg<SERIAL_PORT>> customizedSerial1;
 
 #endif
 
-#endif // !IS_AT90USB && (UBRRH || UBRR0H || UBRR1H || UBRR2H || UBRR3H)
+#ifdef ANYCUBIC_LCD_SERIAL_PORT
+
+  ISR(SERIAL_REGNAME(USART,ANYCUBIC_LCD_SERIAL_PORT,_RX_vect)) {
+    MarlinSerial<AnycubicLcdSerialCfg<ANYCUBIC_LCD_SERIAL_PORT>>::store_rxd_char();
+  }
+
+  ISR(SERIAL_REGNAME(USART,ANYCUBIC_LCD_SERIAL_PORT,_UDRE_vect)) {
+    MarlinSerial<AnycubicLcdSerialCfg<ANYCUBIC_LCD_SERIAL_PORT>>::_tx_udr_empty_irq();
+  }
+
+  // Preinstantiate
+  template class MarlinSerial<AnycubicLcdSerialCfg<ANYCUBIC_LCD_SERIAL_PORT>>;
+
+  // Instantiate
+  MarlinSerial<AnycubicLcdSerialCfg<ANYCUBIC_LCD_SERIAL_PORT>> anycubicLcdSerial;
+
+#endif
 
 // For AT90USB targets use the UART for BT interfacing
 #if BOTH(IS_AT90USB, BLUETOOTH)

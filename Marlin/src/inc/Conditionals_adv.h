@@ -468,6 +468,16 @@
   #define NEED_LSF 1
 #endif
 
+// Flag whether hex_print.cpp is used
+#if ANY(AUTO_BED_LEVELING_UBL, M100_FREE_MEMORY_WATCHER, DEBUG_GCODE_PARSER, TMC_DEBUG, MARLIN_DEV_MODE)
+  #define NEED_HEX_PRINT 1
+#endif
+
+// Flag whether least_squares_fit.cpp is used
+#if ANY(AUTO_BED_LEVELING_UBL, AUTO_BED_LEVELING_LINEAR, Z_STEPPER_ALIGN_KNOWN_STEPPER_POSITIONS)
+  #define NEED_LSF 1
+#endif
+
 // Flag the indexed serial ports that are in use
 #define ANY_SERIAL_IS(N) (defined(SERIAL_PORT) && SERIAL_PORT == (N)) || (defined(SERIAL_PORT_2) && SERIAL_PORT_2 == (N)) || (defined(LCD_SERIAL_PORT) && LCD_SERIAL_PORT == (N))
 #if ANY_SERIAL_IS(-1)

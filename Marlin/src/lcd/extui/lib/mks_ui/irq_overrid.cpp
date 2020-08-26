@@ -67,7 +67,5 @@ void __irq_usart1(void) {
   } /* C-declarations for C++ */
 #endif
 
-#endif //USE_WIFI_FUNCTION
-
 #endif // USE_WIFI_FUNCTION
 #endif // HAS_TFT_LVGL_UI

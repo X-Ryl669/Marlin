@@ -2221,6 +2221,12 @@
  *   Interface:  TFT_INTERFACE_FSMC or TFT_INTERFACE_SPI
  */
 //#define TFT_GENERIC
+// SPI display (MKS Robin Nano V2.0, MKS Gen L V2.0)
+// Upscaled 128x64 Marlin UI
+//
+//#define SPI_GRAPHICAL_TFT
+
+//
 
 /**
  * TFT UI - User Interface Selection. Enable one of the following options:
@@ -2245,7 +2251,6 @@
  *   TFT_MIRROR_X, TFT_MIRROR_Y, TFT_NO_ROTATION
  */
 //#define TFT_ROTATION TFT_NO_ROTATION
-
 //=============================================================================
 //============================  Other Controllers  ============================
 //=============================================================================

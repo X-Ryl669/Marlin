@@ -326,6 +326,23 @@
 
 #endif
 
+#ifdef ANYCUBIC_LCD_SERIAL_PORT
+  template <uint8_t serial>
+  struct AnycubicLcdSerialCfg {
+    static constexpr int PORT               = serial;
+    static constexpr unsigned int RX_SIZE   = 64;
+    static constexpr unsigned int TX_SIZE   = 128;
+    static constexpr bool XONOFF            = false;
+    static constexpr bool EMERGENCYPARSER   = false;
+    static constexpr bool DROPPED_RX        = false;
+    static constexpr bool RX_OVERRUNS       = false;
+    static constexpr bool RX_FRAMING_ERRORS = false;
+    static constexpr bool MAX_RX_QUEUED     = false;
+  };
+
+  extern MarlinSerial<AnycubicLcdSerialCfg<ANYCUBIC_LCD_SERIAL_PORT>> anycubicLcdSerial;
+#endif
+
 // Use the UART for Bluetooth in AT90USB configurations
 #if BOTH(IS_AT90USB, BLUETOOTH)
   extern HardwareSerial bluetoothSerial;

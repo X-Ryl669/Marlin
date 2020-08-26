@@ -22,6 +22,7 @@
 #pragma once
 
 #include "../../../../inc/MarlinConfig.h"
+#include "../../../../libs/W25Qxx.h"
 
 #include "../../../../libs/W25Qxx.h"
 
@@ -136,6 +137,7 @@
   extern "C" { /* C-declarations for C++ */
 #endif
 
+
 union union32 {
   uint8_t bytes[4];
   uint32_t dwords;
@@ -143,13 +145,16 @@ union union32 {
 
 // pic information
 struct pic_msg {
+#ifdef __cplusplus
+extern "C" { /* C-declarations for C++ */
+#endif
   uint8_t name[PIC_NAME_MAX_LEN];
   union union32 size;
 };
 
 typedef struct pic_msg PIC_MSG;
 
-#define BMP_WRITE_BUF_LEN 512
+#define BMP_WRITE_BUF_LEN 256
 
 #define PICINFOADDR   0x1000
 
@@ -164,6 +169,8 @@ extern void get_spi_flash_data(const char *rec_buf, int offset, int size);
 extern void spi_flash_read_test();
 extern void default_view_Read(uint8_t *default_view_Rbuff, uint32_t default_view_Readsize);
 extern void flash_view_Read(uint8_t *flash_view_Rbuff, uint32_t flash_view_Readsize);
+
+extern W25QXXFlash W25QXX;
 
 #ifdef __cplusplus
   } /* C-declarations for C++ */

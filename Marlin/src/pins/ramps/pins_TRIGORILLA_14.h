@@ -84,6 +84,44 @@
   #define E0_AUTO_FAN_PIN            TG_FAN2_PIN  // Used in Anycubic Kossel example config
 #endif
 
+#if ENABLED(ANYCUBIC_I3MEGA)
+  #define CONTROLLER_FAN_PIN         TG_FAN1_PIN
+#endif
+
+//
+// AnyCubic standard pin mappings
+//
+//  On most printers, endstops are NOT all wired to the appropriate pins on the Trigorilla board.
+//  For instance, on a Chiron, Y axis goes to an aux connector.
+//  There are also other things that have been wired in creative ways.
+//  To enable PIN definitions for a specific printer model, #define the appropriate symbol after
+//  MOTHERBOARD in Configuration.h
+
+//
+// Limit Switches
+//
+//#define ANYCUBIC_4_MAX_PRO_ENDSTOPS
+
+#if ENABLED(ANYCUBIC_4_MAX_PRO_ENDSTOPS)
+  #define X_MAX_PIN                           43
+  #define Y_STOP_PIN                          19
+#elif EITHER(ANYCUBIC_CHIRON, ANYCUBIC_I3MEGA)
+  #define Y_STOP_PIN                          42
+  #define Z2_MIN_PIN                          43
+  #ifndef Z_MIN_PROBE_PIN
+    #define Z_MIN_PROBE_PIN                    2
+  #endif
+  #ifndef FIL_RUNOUT_PIN
+    #if ENABLED(ANYCUBIC_CHIRON)
+      #define FIL_RUNOUT_PIN                  33
+    #else
+      #define FIL_RUNOUT_PIN                  19
+    #endif
+  #endif
+  #define BEEPER_PIN                          31
+  #define SD_DETECT_PIN                       49
+#endif
+
 #if ENABLED(ANYCUBIC_LCD_I3MEGA)
   #define CONTROLLER_FAN_PIN         TG_FAN1_PIN
 #endif

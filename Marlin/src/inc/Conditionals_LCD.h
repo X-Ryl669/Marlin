@@ -362,6 +362,22 @@
   #define IS_ULTIPANEL 1
 #endif
 
+
+// Color UI
+#if ANY(TFT_320x240, TFT_480x320, TFT_320x240_SPI, TFT_480x320_SPI)
+  #define HAS_GRAPHICAL_TFT 1
+  #define IS_ULTIPANEL
+#endif
+
+// Fewer lines with touch buttons on-screen
+#if EITHER(TFT_320x240, TFT_320x240_SPI)
+  #define HAS_UI_320x240 1
+  #define LCD_HEIGHT TERN(TOUCH_SCREEN, 6, 7)
+#elif EITHER(TFT_480x320, TFT_480x320_SPI)
+  #define HAS_UI_480x320 1
+  #define LCD_HEIGHT TERN(TOUCH_SCREEN, 6, 7)
+#endif
+
 /**
  * I2C Panels
  */
@@ -497,7 +513,6 @@
   #elif DISABLED(HAS_GRAPHICAL_TFT)
     #define HAS_MARLINUI_HD44780 1
   #endif
-#endif
 
 #if ENABLED(ULTIPANEL) && DISABLED(NO_LCD_MENUS)
   #define HAS_LCD_MENU 1
@@ -822,7 +837,6 @@
   #define EXTRUDE_MINTEMP 170
 #endif
 
-/**
  * TFT Displays
  *
  * Configure parameters for TFT displays:
@@ -833,7 +847,6 @@
  *  - TFT_INTERFACE_(SPI|FSMC)
  *  - TFT_COLOR
  *  - GRAPHICAL_TFT_UPSCALE
- */
 #if ENABLED(MKS_TS35_V2_0)
   // Most common: ST7796
   #define TFT_DEFAULT_ORIENTATION (TFT_EXCHANGE_XY)
@@ -945,4 +958,3 @@
   #undef TOUCH_SCREEN
   #undef TOUCH_SCREEN_CALIBRATION
   #define HAS_TOUCH_XPT2046 1
-#endif

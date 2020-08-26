@@ -103,6 +103,7 @@ void SysTick_Callback() {
       uiCfg.filament_rate                = 100;
 	  }
   }
+      case 0x9325: case 0x9328: case 0x8989: {
   #endif
   if (uiCfg.filament_loading_time_flg == 1) {
     uiCfg.filament_loading_time_cnt++;
@@ -138,12 +139,6 @@ void tft_lvgl_init() {
   disp_language_init();
 
   #if 0//USE_WIFI_FUNCTION
-	mks_esp_wifi_init();
-	WIFISERIAL.begin(WIFI_BAUDRATE);
-	uint32_t serial_connect_timeout = millis() + 1000UL;
-  while (/*!WIFISERIAL && */PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
-	#endif
-
   //init tft first!
   SPI_TFT.spi_init(SPI_FULL_SPEED);
   SPI_TFT.LCD_init();
@@ -156,7 +151,6 @@ void tft_lvgl_init() {
 
   watchdog_refresh();
   mks_test_get();
-
   touch.Init();
 
   lv_init();
@@ -307,11 +301,10 @@ bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data) {
       last_x = last_y = 0;
       last_touch_state = LV_INDEV_STATE_PR;
     }
-    else {
+    else
       if (last_touch_state == LV_INDEV_STATE_PR)
         data->state = LV_INDEV_STATE_REL;
       last_touch_state = LV_INDEV_STATE_REL;
-    }
 
     touch_time1 = tmpTime;
   }
@@ -346,7 +339,7 @@ uint32_t pic_read_base_addr = 0, pic_read_addr_offset = 0;
 lv_fs_res_t spi_flash_open_cb (lv_fs_drv_t * drv, void * file_p, const char * path, lv_fs_mode_t mode) {
   static char last_path_name[30];
   if (strcasecmp(last_path_name,path) != 0) {
-    pic_read_base_addr = lv_get_pic_addr((uint8_t *)path);
+	 	pic_read_base_addr = lv_get_pic_addr((uint8_t *)path);
     ZERO(last_path_name);
     strcpy(last_path_name,path);
   }
@@ -381,7 +374,8 @@ lv_fs_res_t spi_flash_seek_cb(lv_fs_drv_t * drv, void * file_p, uint32_t pos) {
     }
     pic_read_addr_offset = pic_read_base_addr;
   #else
-    pic_read_addr_offset = pic_read_base_addr + pos;
+    #else
+    pic_read_addr_offset = pic_read_base_addr+ pos;
   #endif
   return LV_FS_RES_OK;
 }

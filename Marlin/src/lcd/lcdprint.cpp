@@ -69,6 +69,7 @@ lcd_uint_t lcd_put_u8str_ind_P(PGM_P const pstr, const int8_t ind, PGM_P const i
       lcd_put_wchar(ch);
       n--;
     }
+    }
   }
   return n;
 }

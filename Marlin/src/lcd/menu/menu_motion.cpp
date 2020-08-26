@@ -181,7 +181,7 @@ void _menu_move_distance(const AxisEnum axis, const screenFunc_t func, const int
       SUBMENU_P(NUL_STR, []{ _goto_manual_move(float(SHORT_MANUAL_Z_MOVE)); });
       MENU_ITEM_ADDON_START(0 + ENABLED(HAS_MARLINUI_HD44780));
       lcd_put_u8str(tmp);
-      MENU_ITEM_ADDON_END();
+        MENU_ITEM_ADDON_END();
     #else
       SUBMENU_P(tmp, []{ _goto_manual_move(float(SHORT_MANUAL_Z_MOVE)); });
     #endif

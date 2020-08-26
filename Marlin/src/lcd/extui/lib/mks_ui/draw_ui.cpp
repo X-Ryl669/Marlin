@@ -47,6 +47,7 @@
   #include "../../../../feature/pause.h"
 #endif
 
+W25QXXFlash W25QXX;
 CFG_ITMES gCfgItems;
 UI_CFG uiCfg;
 DISP_STATE_STACK disp_state_stack;
@@ -907,6 +908,8 @@ char *creat_title_text() {
 
       SPI_TFT.setWindow(xpos_pixel, y_off * 20 + ypos_pixel, 200, 20); // 200*200
       SPI_TFT.tftio.WriteSequence((uint16_t*)(bmp_public_buf), DEFAULT_VIEW_MAX_SIZE / 20);
+        int i = 0;
+        uint16_t *p_index;
 
       y_off++;
     }

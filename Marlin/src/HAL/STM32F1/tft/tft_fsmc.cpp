@@ -84,10 +84,14 @@ __attribute__((always_inline)) __STATIC_INLINE void __DSB() {
 #define FSMC_ADDRESS_SETUP_TIME   15  // AddressSetupTime
 #define FSMC_DATA_SETUP_TIME      15  // DataSetupTime
 
-static uint8_t fsmcInit = 0;
 void TFT_FSMC::Init() {
   uint8_t cs = FSMC_CS_PIN, rs = FSMC_RS_PIN;
   uint32_t controllerAddress;
+
+  #if PIN_EXISTS(TFT_RESET)
+    OUT_WRITE(TFT_RESET_PIN, HIGH);
+    delay(100);
+  #endif
 
   #if ENABLED(LCD_USE_DMA_FSMC)
     dma_init(FSMC_DMA_DEV);
