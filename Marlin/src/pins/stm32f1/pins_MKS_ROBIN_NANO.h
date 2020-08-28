@@ -122,10 +122,10 @@
 #if HAS_TFT_LVGL_UI
   //#define MKSPWC
   #ifdef MKSPWC
-    #define SUICIDE_PIN                     PB2   // Enable MKSPWC SUICIDE PIN
-    #define SUICIDE_PIN_INVERTING          false  // Enable MKSPWC PIN STATE
-    #define KILL_PIN                        PA2   // Enable MKSPWC DET PIN
-    #define KILL_PIN_STATE                  true  // Enable MKSPWC PIN STATE
+    #define SUICIDE_PIN                       PB2   // Enable MKSPWC SUICIDE PIN
+    #define SUICIDE_PIN_INVERTING             false // Enable MKSPWC PIN STATE
+    #define KILL_PIN                          PA2   // Enable MKSPWC DET PIN
+    #define KILL_PIN_STATE                    true  // Enable MKSPWC PIN STATE
   #endif
 
   #define MT_DET_1_PIN                      PA4   // LVGL UI FILAMENT RUNOUT1 PIN
@@ -145,9 +145,6 @@
 #define SERVO0_PIN                          PA8   // Enable BLTOUCH support
 
 //#define LED_PIN                           PB2
-
-#define WIFI_IO1_PIN       			            PC7
-#define WIFI_RESET_PIN			              	PA5
 
 //
 // SD Card

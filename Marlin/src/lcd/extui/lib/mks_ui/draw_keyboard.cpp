@@ -67,11 +67,6 @@ static const lv_btnm_ctrl_t kb_ctrl_spec_map[] = {
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     LV_KB_CTRL_BTN_FLAGS | 2, 2, 6, 2, LV_KB_CTRL_BTN_FLAGS | 2};
 
-static const char * kb_map_num[] = {"1", "2", "3", LV_SYMBOL_CLOSE, "\n",
-                                    "4", "5", "6", LV_SYMBOL_OK, "\n",
-                                    "7", "8", "9", LV_SYMBOL_BACKSPACE, "\n",
-                                    "+/-", "0", ".", LV_SYMBOL_LEFT, LV_SYMBOL_RIGHT, ""};
-
 static const lv_btnm_ctrl_t kb_ctrl_num_map[] = {
         1, 1, 1, LV_KB_CTRL_BTN_FLAGS | 2,
         1, 1, 1, LV_KB_CTRL_BTN_FLAGS | 2,

@@ -123,9 +123,35 @@ void SysTick_Callback() {
       uiCfg.filament_unloading_completed = 1;
       uiCfg.filament_rate                = 100;
     }
+    #else
+    
+    OUT_WRITE(LCD_BACKLIGHT_PIN, LOW);
+    lcd_draw_logo();
+
+    delay(2000);
   }
 }
 
+extern unsigned char bmp_public_buf[17 * 1024];
+extern void LCD_IO_WriteSequence(uint16_t *data, uint16_t length);
+
+void lcd_draw_logo() {
+	LCD_setWindowArea(0, 0, TFT_WIDTH, TFT_HEIGHT);
+	LCD_WriteRAM_Prepare();
+	
+	for (uint16_t i = 0; i < (TFT_HEIGHT); i ++) {
+	  Pic_Logo_Read((uint8_t *)"", (uint8_t *)bmp_public_buf, (TFT_WIDTH) * 2);
+    #ifdef LCD_USE_DMA_FSMC
+      LCD_IO_WriteSequence((uint16_t *)bmp_public_buf, TFT_WIDTH);
+    #else
+      int index = 0;,x_off = 0;
+      for (x_off = 0; x_off < TFT_WIDTH; x_off++) {				
+        LCD_IO_WriteData((uint16_t)bmp_public_buf[index]);
+        index += 2;
+      }
+		#endif
+	}
+}
 extern uint8_t bmp_public_buf[17 * 1024];
 
 void tft_lvgl_init() {
@@ -274,6 +300,7 @@ static bool get_point(int16_t *x, int16_t *y) {
   return is_touched;
 }
 
+static uint8_t last_touch_state = LV_INDEV_STATE_REL;
 bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data) {
   static int16_t last_x = 0, last_y = 0;
   static uint8_t last_touch_state = LV_INDEV_STATE_REL;
@@ -301,10 +328,11 @@ bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data) {
       last_x = last_y = 0;
       last_touch_state = LV_INDEV_STATE_PR;
     }
-    else
+    else {
       if (last_touch_state == LV_INDEV_STATE_PR)
         data->state = LV_INDEV_STATE_REL;
       last_touch_state = LV_INDEV_STATE_REL;
+    }
 
     touch_time1 = tmpTime;
   }

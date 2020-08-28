@@ -189,7 +189,6 @@ void lv_draw_tmc_current_settings(void) {
     lv_btn_set_style(buttonXValue, LV_BTN_STYLE_PR, &style_para_value);
     labelXValue = lv_label_create(buttonXValue, NULL);
     
-
     line1 = lv_line_create(scr, NULL);
     lv_ex_line(line1, line_points[0]);
 
@@ -206,7 +205,6 @@ void lv_draw_tmc_current_settings(void) {
     lv_btn_set_style(buttonYValue, LV_BTN_STYLE_PR, &style_para_value);
     labelYValue = lv_label_create(buttonYValue, NULL);
     
-
     line2 = lv_line_create(scr, NULL);
     lv_ex_line(line2, line_points[1]);
 
@@ -214,7 +212,7 @@ void lv_draw_tmc_current_settings(void) {
     lv_obj_set_style(labelZText, &tft_style_label_rel);
     lv_obj_set_pos(labelZText, PARA_UI_POS_X, PARA_UI_POS_Y * 3 + 10);
     lv_label_set_text(labelZText, machine_menu.Z_Current);
-
+	
     buttonZValue = lv_btn_create(scr, NULL);
     lv_obj_set_pos(buttonZValue, PARA_UI_VALUE_POS_X, PARA_UI_POS_Y * 3 + PARA_UI_VALUE_V);
     lv_obj_set_size(buttonZValue, PARA_UI_VALUE_BTN_X_SIZE, PARA_UI_VALUE_BTN_Y_SIZE);
@@ -222,7 +220,6 @@ void lv_draw_tmc_current_settings(void) {
     lv_btn_set_style(buttonZValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonZValue, LV_BTN_STYLE_PR, &style_para_value);
     labelZValue = lv_label_create(buttonZValue, NULL);
-    
 
     line3 = lv_line_create(scr, NULL);
     lv_ex_line(line3, line_points[2]);
@@ -231,7 +228,7 @@ void lv_draw_tmc_current_settings(void) {
     lv_obj_set_style(labelE0Text, &tft_style_label_rel);
     lv_obj_set_pos(labelE0Text, PARA_UI_POS_X, PARA_UI_POS_Y * 4 + 10);
     lv_label_set_text(labelE0Text, machine_menu.E0_Current);
-
+	
     buttonE0Value = lv_btn_create(scr, NULL);
     lv_obj_set_pos(buttonE0Value, PARA_UI_VALUE_POS_X, PARA_UI_POS_Y * 4 + PARA_UI_VALUE_V);
     lv_obj_set_size(buttonE0Value, PARA_UI_VALUE_BTN_X_SIZE, PARA_UI_VALUE_BTN_Y_SIZE);
@@ -261,9 +258,9 @@ void lv_draw_tmc_current_settings(void) {
       #if HAS_ROTARY_ENCODER
         if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonTurnPage);
       #if BUTTONS_EXIST(EN1, EN2, ENC)
-	if (gCfgItems.encoder_enable == true) {
-		lv_group_add_obj(g, buttonTurnPage);
-	}
+        if (gCfgItems.encoder_enable == true) {
+          lv_group_add_obj(g, buttonTurnPage);
+        }
       #endif // BUTTONS_EXIST(EN1, EN2, ENC)
       #endif
     //#endif
@@ -283,7 +280,6 @@ void lv_draw_tmc_current_settings(void) {
       lv_btn_set_style(buttonE1Value, LV_BTN_STYLE_PR, &style_para_value);
       labelE1Value = lv_label_create(buttonE1Value, NULL);
       
-
       line1 = lv_line_create(scr, NULL);
       lv_ex_line(line1, line_points[0]);
 

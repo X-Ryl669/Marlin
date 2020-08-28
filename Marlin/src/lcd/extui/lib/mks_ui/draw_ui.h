@@ -209,7 +209,6 @@ typedef struct {
   float pausePosY;
   float pausePosZ;
   uint32_t curFilesize;
-  
 } CFG_ITMES;
 
 typedef struct {
@@ -265,6 +264,9 @@ typedef enum {
   OPERATE_UI,
   PAUSE_UI,
   EXTRUSION_UI,
+  float current_x_position_bak;
+  float current_y_position_bak;
+  float current_e_position_bak;
   FAN_UI,
   PRE_HEAT_UI,
   CHANGE_SPEED_UI,

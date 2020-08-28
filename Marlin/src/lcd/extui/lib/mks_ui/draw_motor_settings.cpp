@@ -248,7 +248,7 @@ void lv_draw_motor_settings(void) {
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonTMCcurrent);
     #endif
-	}
+      }
    #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     buttonTMCcurrentNarrow = lv_imgbtn_create(scr, NULL);
@@ -313,6 +313,7 @@ void lv_draw_motor_settings(void) {
   lv_obj_set_pos(buttonBack, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
   label_Back = lv_label_create(buttonBack, NULL);
+
   #if BUTTONS_EXIST(EN1, EN2, ENC)
 	if (gCfgItems.encoder_enable == true) {
 		lv_group_add_obj(g, buttonBack);

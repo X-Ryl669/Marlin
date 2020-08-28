@@ -208,7 +208,6 @@ void lv_draw_operation(void) {
     buttonSpeed    = lv_imgbtn_create(scr, NULL);
     buttonBabyStep = lv_imgbtn_create(scr, NULL);
   }
-  buttonFilament = lv_imgbtn_create(scr, NULL);
   buttonBack       = lv_imgbtn_create(scr, NULL);
 
   lv_obj_set_event_cb_mks(buttonPreHeat, event_handler, ID_O_PRE_HEAT, NULL, 0);
@@ -229,7 +228,7 @@ void lv_draw_operation(void) {
     lv_imgbtn_set_src(buttonFan, LV_BTN_STATE_PR, "F:/bmp_fan.bin");
     lv_imgbtn_set_style(buttonFan, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonFan, LV_BTN_STATE_REL, &tft_style_label_rel);
-    
+
     if (gCfgItems.finish_power_off == 1) {
       lv_imgbtn_set_src(buttonPowerOff, LV_BTN_STATE_REL, "F:/bmp_auto_off.bin");
       lv_imgbtn_set_src(buttonPowerOff, LV_BTN_STATE_PR, "F:/bmp_auto_off.bin");
@@ -252,12 +251,12 @@ void lv_draw_operation(void) {
     #endif
     
     #if BUTTONS_EXIST(EN1, EN2, ENC)
-	if (gCfgItems.encoder_enable == true) {
-		lv_group_add_obj(g, buttonPreHeat);
-  		lv_group_add_obj(g, buttonExtrusion);
-		lv_group_add_obj(g, buttonFan);
-		lv_group_add_obj(g, buttonSpeed);
-	}
+      if (gCfgItems.encoder_enable == true) {
+        lv_group_add_obj(g, buttonPreHeat);
+        lv_group_add_obj(g, buttonFilament);
+        lv_group_add_obj(g, buttonFan);
+        lv_group_add_obj(g, buttonPowerOff);
+      }
     #endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     if (uiCfg.print_state != WORKING) {
@@ -300,13 +299,6 @@ void lv_draw_operation(void) {
         }
       #endif
 	}
-    else {
-      lv_imgbtn_set_src(buttonPowerOff, LV_BTN_STATE_REL, "F:/bmp_manual_off.bin");
-      lv_imgbtn_set_src(buttonPowerOff, LV_BTN_STATE_PR, "F:/bmp_manual_off.bin");
-    }
-	
-    lv_obj_set_event_cb_mks(buttonPowerOff, event_handler, ID_O_POWER_OFF, NULL, 0);
-    
     
     lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_O_RETURN, NULL, 0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
@@ -321,19 +313,12 @@ void lv_draw_operation(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
-  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_PR, &tft_style_label_pre);
-  lv_imgbtn_set_style(buttonFilament, LV_BTN_STATE_REL, &tft_style_label_rel);
-  
-
   #if BUTTONS_EXIST(EN1, EN2, ENC)
 	if (gCfgItems.encoder_enable == true) {
-		lv_group_add_obj(g, buttonPowerOff);
-		lv_group_add_obj(g, buttonFilament);
 		lv_group_add_obj(g, buttonBack);
 	}
   #endif // BUTTONS_EXIST(EN1, EN2, ENC)
   
-
   lv_obj_set_pos(buttonPreHeat, INTERVAL_V, titleHeight);
   lv_obj_set_pos(buttonFilament, BTN_X_PIXEL + INTERVAL_V * 2, titleHeight);
   lv_obj_set_pos(buttonFan, BTN_X_PIXEL * 2 + INTERVAL_V * 3, titleHeight);
@@ -346,12 +331,10 @@ void lv_draw_operation(void) {
     */
     lv_obj_set_pos(buttonExtrusion, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
     lv_obj_set_pos(buttonMove, BTN_X_PIXEL + INTERVAL_V * 2, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
-    lv_obj_set_pos(buttonFilament, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   }
   else {
     lv_obj_set_pos(buttonSpeed, INTERVAL_V, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
     lv_obj_set_pos(buttonBabyStep, BTN_X_PIXEL + INTERVAL_V * 2, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
-    lv_obj_set_pos(buttonFilament, BTN_X_PIXEL * 2 + INTERVAL_V * 3, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
   }
 
   lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
@@ -402,7 +385,7 @@ void lv_draw_operation(void) {
 
     lv_label_set_text(label_Filament, operation_menu.filament);
     lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
-
+    
     lv_label_set_text(label_Fan, operation_menu.fan);
     lv_obj_align(label_Fan, buttonFan, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
@@ -432,9 +415,6 @@ void lv_draw_operation(void) {
       lv_label_set_text(label_BabyStep, operation_menu.babystep);
       lv_obj_align(label_BabyStep, buttonBabyStep, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
     }
-
-    lv_label_set_text(label_Filament, operation_menu.filament);
-    lv_obj_align(label_Filament, buttonFilament, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
 
     lv_label_set_text(label_Back, common_menu.text_back);
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);

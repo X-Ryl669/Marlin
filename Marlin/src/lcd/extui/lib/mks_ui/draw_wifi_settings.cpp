@@ -163,7 +163,6 @@ void lv_draw_wifi_settings(void) {
   lv_btn_set_layout(buttonModelValue, LV_LAYOUT_OFF);
   labelModelValue = lv_label_create(buttonModelValue, NULL);
 	
-
   line1 = lv_line_create(scr, NULL);
   lv_ex_line(line1,line_points[0]);
 
@@ -179,7 +178,6 @@ void lv_draw_wifi_settings(void) {
   lv_btn_set_style(buttonNameValue, LV_BTN_STYLE_PR, &style_para_value);
   labelNameValue = lv_label_create(buttonNameValue, NULL);
 	
-
   line2 = lv_line_create(scr, NULL);
   lv_ex_line(line2,line_points[1]);
 
@@ -195,7 +193,6 @@ void lv_draw_wifi_settings(void) {
   lv_btn_set_style(buttonPassWordValue, LV_BTN_STYLE_PR, &style_para_value);
   labelPassWordValue = lv_label_create(buttonPassWordValue, NULL);
 	
-
   line3 = lv_line_create(scr, NULL);
   lv_ex_line(line3,line_points[2]);
 
@@ -220,7 +217,6 @@ void lv_draw_wifi_settings(void) {
   lv_btn_set_layout(buttonCloudValue, LV_LAYOUT_OFF);
   labelCloudValue = lv_label_create(buttonCloudValue, NULL);
 	
-
   line4 = lv_line_create(scr, NULL);
   lv_ex_line(line4,line_points[3]);
 
@@ -230,7 +226,6 @@ void lv_draw_wifi_settings(void) {
   lv_imgbtn_set_src(buttonConfig, LV_BTN_STATE_PR, "F:/bmp_back70x40.bin");
   lv_imgbtn_set_style(buttonConfig, LV_BTN_STATE_PR, &tft_style_label_pre);
   lv_imgbtn_set_style(buttonConfig, LV_BTN_STATE_REL, &tft_style_label_rel);
-	
   lv_obj_set_pos(buttonConfig, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y);
   lv_btn_set_layout(buttonConfig, LV_LAYOUT_OFF);
   labelConfig = lv_label_create(buttonConfig, NULL);

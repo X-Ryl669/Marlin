@@ -287,7 +287,7 @@ void lv_draw_acceleration_settings(void) {
     buttonYValue = lv_btn_create(scr, NULL);
     lv_obj_set_pos(buttonYValue, PARA_UI_VALUE_POS_X, PARA_UI_POS_Y + PARA_UI_VALUE_V);
     lv_obj_set_size(buttonYValue, PARA_UI_VALUE_BTN_X_SIZE, PARA_UI_VALUE_BTN_Y_SIZE);
-    //lv_imgbtn_set_src(buttonYValue, LV_BTN_STATE_REL, "F:/bmp_value_blank.bin");
+    lv_obj_set_event_cb_mks(buttonYValue, event_handler, ID_ACCE_Y, NULL, 0);
     lv_btn_set_style(buttonYValue, LV_BTN_STYLE_REL, &style_para_value);
     lv_btn_set_style(buttonYValue, LV_BTN_STYLE_PR, &style_para_value);
     labelYValue = lv_label_create(buttonYValue, NULL);

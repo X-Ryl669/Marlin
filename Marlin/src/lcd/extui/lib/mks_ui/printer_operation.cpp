@@ -54,6 +54,10 @@ void printer_state_polling() {
 
         gcode.process_subcommands_now_P(PSTR("M25"));
 
+        uiCfg.current_x_position_bak = current_position.x;
+        uiCfg.current_y_position_bak = current_position.y;
+        
+
         //save the positon
         uiCfg.current_x_position_bak = current_position.x;
         uiCfg.current_y_position_bak = current_position.y;
@@ -72,7 +76,7 @@ void printer_state_polling() {
         }
         uiCfg.print_state = PAUSED;
         uiCfg.current_e_position_bak = current_position.e;
-
+        
         // #if ENABLED(POWER_LOSS_RECOVERY)
         //  if (recovery.enabled) recovery.save(true);
         // #endif

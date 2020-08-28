@@ -366,7 +366,7 @@ void PrintJobRecovery::resume() {
     gcode.process_subcommands_now(cmd);
 
     gcode.process_subcommands_now_P(PSTR(
-      "G28R0"                               // No raise during G28
+      "G28"                               // No raise during G28
       #if IS_CARTESIAN && DISABLED(POWER_LOSS_RECOVER_ZHOME)
         "XY"                                // Don't home Z on Cartesian unless overridden
       #endif

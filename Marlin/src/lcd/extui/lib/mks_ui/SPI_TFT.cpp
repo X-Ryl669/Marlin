@@ -59,10 +59,10 @@ void TFT::LCD_init() {
   #endif
   delay(100);
   LCD_clear(0x0000);
-  #if LV_USE_ROTATION_180
-  LCD_WR_DATA(0xE8);
+  #if ENABLED(GRAPHICAL_TFT_ROTATE_180)
+  	LCD_WR_DATA(0xE8);
   #else
-  LCD_WR_DATA(0x28);
+  	LCD_WR_DATA(0x28);
   #endif
   LCD_Draw_Logo();
   #if PIN_EXISTS(TFT_BACKLIGHT)

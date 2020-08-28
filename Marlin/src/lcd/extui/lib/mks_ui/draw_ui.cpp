@@ -170,6 +170,18 @@ void gCfgItems_init() {
     update_spi_flash();
   }
 
+  #if ENABLED(GRAPHICAL_TFT_ROTATE_180)
+  	if(gCfgItems.disp_rotation_180 != 0xEE) {
+      gCfgItems.disp_rotation_180 = 0xEE;
+      update_spi_flash();
+    }
+  #else
+  	if(gCfgItems.disp_rotation_180 != 0) {
+		  gCfgItems.disp_rotation_180 = 0;
+		  update_spi_flash();
+  	}
+  #endif
+
   uiCfg.F[0] = 'N';
   uiCfg.F[1] = 'A';
   uiCfg.F[2] = 'N';
@@ -183,6 +195,8 @@ void gCfgItems_init() {
   gCfgItems.filamentchange_unload_length = 200;
   gCfgItems.filamentchange_unload_speed  = 1000;
   gCfgItems.filament_limit_temper        = 200;
+
+  gCfgItems.encoder_enable = true;
   
 void ui_cfg_init() {
   uiCfg.curTempType         = 0;
@@ -231,10 +245,10 @@ void ui_cfg_init() {
 
     strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
     uiCfg.cloud_port = 10086;
+  #endif
+
   uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length*60.0/gCfgItems.filamentchange_load_speed)+0.5);
   uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length*60.0/gCfgItems.filamentchange_unload_speed)+0.5);
-
-  #endif
 
   uiCfg.filament_loading_time = (uint32_t)((gCfgItems.filamentchange_load_length * 60.0 / gCfgItems.filamentchange_load_speed) + 0.5);
   uiCfg.filament_unloading_time = (uint32_t)((gCfgItems.filamentchange_unload_length * 60.0 / gCfgItems.filamentchange_unload_speed) + 0.5);
