@@ -125,11 +125,11 @@ void gCfgItems_init() {
     gCfgItems.wifi_type     = ESP_WIFI;
   #endif  //USE_WIFI_FUNCTION
   W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems.spi_flash_flag, VAR_INF_ADDR, sizeof(gCfgItems.spi_flash_flag));
-  if (gCfgItems.spi_flash_flag == GCFG_FLAG_VALUE) {
+  if (gCfgItems.spi_flash_flag == FLASH_INF_VALID_FLAG) {
     W25QXX.SPI_FLASH_BufferRead((uint8_t *)&gCfgItems, VAR_INF_ADDR, sizeof(gCfgItems));
   }
   else {
-    gCfgItems.spi_flash_flag = GCFG_FLAG_VALUE;
+    gCfgItems.spi_flash_flag = FLASH_INF_VALID_FLAG;
     W25QXX.SPI_FLASH_SectorErase(VAR_INF_ADDR);
     W25QXX.SPI_FLASH_BufferWrite((uint8_t *)&gCfgItems, VAR_INF_ADDR, sizeof(gCfgItems));
   }
