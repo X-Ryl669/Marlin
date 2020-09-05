@@ -159,6 +159,8 @@ void gCfgItems_init() {
   gCfgItems.filamentchange_unload_length = 200;
   gCfgItems.filamentchange_unload_speed  = 1000;
   gCfgItems.filament_limit_temper        = 200;
+
+  gCfgItems.encoder_enable = true;
   
 void gCfg_to_spiFlah() {
   W25QXX.SPI_FLASH_SectorErase(VAR_INF_ADDR);
