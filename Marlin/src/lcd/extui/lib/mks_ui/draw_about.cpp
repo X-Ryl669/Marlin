@@ -106,7 +106,8 @@ void lv_draw_about(void) {
 
   fw_type = lv_label_create(scr, NULL);
   lv_obj_set_style(fw_type, &tft_style_label_rel);
-  lv_label_set_text(fw_type, "Firmware: Marlin " SHORT_BUILD_VERSION);
+  lv_label_set_text(fw_type, "Firmware: Marlin " SHORT_BUILD_VERSION " MKS-2.1.0");
+
   lv_obj_align(fw_type, NULL, LV_ALIGN_CENTER, 0, -20);
 
   board = lv_label_create(scr, NULL);

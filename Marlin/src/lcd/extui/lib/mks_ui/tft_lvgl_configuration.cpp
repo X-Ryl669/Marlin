@@ -500,13 +500,13 @@ void lv_encoder_pin_init() {
 
   //static const int8_t encoderDirection = 1;
   //static int16_t enc_Direction;
+  static uint32_t encoder_time1;
   void lv_update_encoder() {
     static uint32_t encoder_time1;
     uint32_t tmpTime, diffTime = 0;
     tmpTime = millis();
     diffTime = getTickDiff(tmpTime, encoder_time1);
     if (diffTime > 50) {
-
       #if HAS_ENCODER_WHEEL
 
         #if ANY_BUTTON(EN1, EN2, ENC, BACK)

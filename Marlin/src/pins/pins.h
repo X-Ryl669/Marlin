@@ -571,7 +571,8 @@
   #include "stm32f1/pins_TRIGORILLA_PRO.h"      // STM32F1                                env:trigorilla_pro
 #elif MB(FLY_MINI)
   #include "stm32f1/pins_FLY_MINI.h"            // STM32F1                                env:FLY_MINI
-
+#elif MB(MKS_ROBIN_E3P)
+  #include "stm32f1/pins_MKS_ROBIN_E3P.h"       // STM32F1                                env:mks_robin_e3p
 //
 // ARM Cortex-M4F
 //
