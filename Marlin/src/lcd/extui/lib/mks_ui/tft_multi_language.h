@@ -460,6 +460,13 @@ typedef struct more_menu_disp {
 } more_menu_def;
 
 extern more_menu_def more_menu;
+  const char *custom1;
+  const char *custom2;
+  const char *custom3;
+  const char *custom4;
+  const char *custom5;
+  const char *custom6;
+  const char *custom7;
 
 typedef struct wifi_menu_disp {
   const char *title;
