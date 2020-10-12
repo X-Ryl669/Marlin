@@ -136,6 +136,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_CN;
     machine_menu.enable               = ENABLE_CN;
     machine_menu.disable              = DISABLE_CN;
+    machine_menu.locked               = LOCKED_CN;
     machine_menu.z_min                = Z_MIN_CN;
     machine_menu.z_max                = Z_MAX_CN;
 
@@ -378,6 +379,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_T_CN;
     machine_menu.enable               = ENABLE_T_CN;
     machine_menu.disable              = DISABLE_T_CN;
+    machine_menu.locked               = LOCKED_T_CN;
     machine_menu.z_min                = Z_MIN_T_CN;
     machine_menu.z_max                = Z_MAX_T_CN;
 
@@ -623,6 +625,7 @@ void machine_setting_disp() {
     machine_menu.ProbeZspeed          = PROBE_Z_SPEED_EN;
     machine_menu.enable               = ENABLE_EN;
     machine_menu.disable              = DISABLE_EN;
+    machine_menu.locked               = LOCKED_EN;
     machine_menu.z_min                = Z_MIN_EN;
     machine_menu.z_max                = Z_MAX_EN;
 
@@ -989,13 +992,6 @@ void disp_language_init() {
       filesys_menu.usb_sys = U_DISK_TEXT_CN;
       //
       more_menu.title   = TITLE_MORE_CN;
-      // WIFI
-      wifi_menu.title = WIFI_TEXT;
-      // wifi_menu.key = WIFI_KEY_TEXT_CN;
-      // wifi_menu.ip = WIFI_IP_TEXT_CN;
-      // wifi_menu.state = WIFI_STA_TEXT_CN;
-      wifi_menu.cloud     = CLOUD_TEXT_CN;
-      wifi_menu.reconnect = WIFI_RECONNECT_TEXT_CN;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_CN;
             #endif
@@ -1017,6 +1013,13 @@ void disp_language_init() {
             #if ENABLED(USER_CMD_7_ENABLE)
               more_menu.custom7 = MORE_CUSTOM7_TEXT_CN;
             #endif
+      // WIFI
+      wifi_menu.title = WIFI_TEXT;
+      // wifi_menu.key = WIFI_KEY_TEXT_CN;
+      // wifi_menu.ip = WIFI_IP_TEXT_CN;
+      // wifi_menu.state = WIFI_STA_TEXT_CN;
+      wifi_menu.cloud     = CLOUD_TEXT_CN;
+      wifi_menu.reconnect = WIFI_RECONNECT_TEXT_CN;
       // CLOUD
       cloud_menu.title        = TITLE_CLOUD_TEXT_CN;
       cloud_menu.bind         = CLOUD_BINDED_CN;
@@ -1475,7 +1478,7 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_EN;
             set_menu.eepromSet    = EEPROM_SETTINGS_EN;
             //
-            more_menu.title   = TITLE_MORE_EN;
+            more_menu.title       = TITLE_MORE_EN;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
             #endif
@@ -1713,7 +1716,7 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_RU;
             set_menu.eepromSet    = EEPROM_SETTINGS_RU;
             //
-            more_menu.title   = TITLE_MORE_RU;
+            more_menu.title       = TITLE_MORE_RU;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_RU;
             #endif
@@ -2050,7 +2053,7 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_SP;
             set_menu.eepromSet    = EEPROM_SETTINGS_SP;
             //
-            more_menu.title   = TITLE_MORE_SP;
+            more_menu.title       = TITLE_MORE_SP;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_SP;
             #endif
@@ -2289,7 +2292,7 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_FR;
           set_menu.eepromSet    = EEPROM_SETTINGS_FR;
           //
-          more_menu.title   = TITLE_MORE_FR;
+          more_menu.title       = TITLE_MORE_FR;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_FR;
             #endif
@@ -2530,7 +2533,7 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_IT;
           set_menu.eepromSet    = EEPROM_SETTINGS_IT;
           //
-          more_menu.title   = TITLE_MORE_IT;
+          more_menu.title       = TITLE_MORE_IT;
             #if ENABLED(USER_CMD_1_ENABLE)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_IT;
             #endif

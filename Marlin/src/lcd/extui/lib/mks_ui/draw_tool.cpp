@@ -175,7 +175,7 @@ void lv_draw_tool(void) {
   buttonHome      = lv_imgbtn_create(scr, NULL);
   buttonLevel     = lv_imgbtn_create(scr, NULL);
   buttonFilament  = lv_imgbtn_create(scr, NULL);
-  //buttonMore    = lv_imgbtn_create(scr, NULL);
+  #if ENABLED(CUSTOM_USER_MENUS)
     buttonMore    = lv_imgbtn_create(scr, NULL);
   #endif
   buttonBack      = lv_imgbtn_create(scr, NULL);
