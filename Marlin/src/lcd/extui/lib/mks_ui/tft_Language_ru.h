@@ -29,7 +29,8 @@
 #define PRINT_TEXT_RU                   " печать"
 #define EXTRUDE_TEXT_RU                 "экструзия"
 #define LEVELING_TEXT_RU                "уровень"
-#define AUTO_LEVELING_TEXT_RU           "aвто"
+#define MLEVELING_TEXT_RU                "углы"
+#define AUTO_LEVELING_TEXT_RU           "aвтоуровень"
 #define SET_TEXT_RU                     "настройки"
 #define MORE_TEXT_RU                    "больше"
 
@@ -46,11 +47,13 @@
 #define BACK_TEXT_RU                    "назад"
 
 #define TOOL_PREHEAT_RU                 "нагрев"
-#define TOOL_EXTRUDE_RU                 "экструзия"
+#define TOOL_EXTRUDE_RU                 "экструдер"
 #define TOOL_MOVE_RU                    "движение"
 #define TOOL_HOME_RU                    "домой"
 #define TOOL_LEVELING_RU                "уровень"
-#define TOOL_AUTO_LEVELING_RU           "aвто"
+#define TOOL_MLEVELING_RU                "углы"
+//#define TOOL_MLEVELING_RU                "выровнять\nуглы"    //Malderin
+#define TOOL_AUTO_LEVELING_RU           "aвтоуровень"
 #define TOOL_FILAMENT_RU                "замена"
 #define TOOL_MORE_RU                    "больше"
 
@@ -211,6 +214,7 @@
 #define TITLE_HOME_RU                       "Home"
 #define TITLE_EXTRUDE_RU                    "экструзия"
 #define TITLE_LEVELING_RU                   "уровень"
+#define TITLE_MLEVELING_RU                   "углы"
 #define TITLE_SET_RU                        "настройки"
 #define TITLE_MORE_RU                       "больше"
 #define TITLE_CHOOSEFILE_RU                 "файла"
@@ -279,6 +283,18 @@
 #define MORE_CUSTOM6_TEXT_RU  USER_DESC_6
 #define MORE_CUSTOM7_TEXT_RU  USER_DESC_7
 #define EEPROM_SETTINGS_REVERT_RU     "Bосстановить заводские настройки по умолчанию"
+
+// #define EEPROM_STORE_TIPS_RU          "Сохранить настройки в EEPROM?"
+// #define EEPROM_READ_TIPS_RU           "Читать настройки из EEPROM?"
+// #define EEPROM_REVERT_TIPS_RU         "Revert settings to factory defaults?"
+
+#define MORE_CUSTOM1_TEXT_RU  USER_DESC_1
+#define MORE_CUSTOM2_TEXT_RU  USER_DESC_2
+#define MORE_CUSTOM3_TEXT_RU  USER_DESC_3
+#define MORE_CUSTOM4_TEXT_RU  USER_DESC_4
+#define MORE_CUSTOM5_TEXT_RU  USER_DESC_5
+#define MORE_CUSTOM6_TEXT_RU  USER_DESC_6
+#define MORE_CUSTOM7_TEXT_RU  USER_DESC_7
 
 //Malderin translate
 //
@@ -384,13 +400,5 @@
 
 #define ENCODER_CONF_TITLE_RU           "Hастройки принтера>Hастройки энкодера"
 #define ENCODER_CONF_TEXT_RU            "энкодер используется?"
-
-#define MORE_CUSTOM1_TEXT_RU  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_RU  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_RU  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_RU  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_RU  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_RU  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_RU  USER_DESC_7
 
 //end of Malderin translate

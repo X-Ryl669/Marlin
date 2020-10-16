@@ -208,6 +208,7 @@ static const char assets[][LONG_FILENAME_LENGTH] = {
   #if ENABLED(USE_WIFI_FUNCTION)
     //wifi screen
     "bmp_wifi.bin",
+    "bmp_cloud.bin",
   #endif
 
   //babystep screen

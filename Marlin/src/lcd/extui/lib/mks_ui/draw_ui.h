@@ -104,6 +104,7 @@
 #include "../../inc/MarlinConfigPre.h"
 #define FILE_SYS_USB  0
 #define FILE_SYS_SD 1
+  #include "draw_cloud_bind.h"
 
 #define TICK_CYCLE 1
 
@@ -165,6 +166,10 @@
   #define PARA_UI_VALUE_SIZE_X_2    200
   #define PARA_UI_VALUE_POS_X_2     320
   #define PARA_UI_VALUE_V_2         5
+  
+  #define QRCODE_X 	                20
+  #define QRCODE_Y 	                40
+  #define QRCODE_WIDTH	            160
 
   #define PARA_UI_VALUE_BTN_X_SIZE  70
   #define PARA_UI_VALUE_BTN_Y_SIZE  28

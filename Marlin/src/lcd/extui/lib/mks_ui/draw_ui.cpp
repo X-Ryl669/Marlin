@@ -189,7 +189,7 @@ void gCfgItems_init() {
   W25QXX.SPI_FLASH_BlockErase(REFLSHE_FLGA_ADD + 32 - 64*1024);
   W25QXX.SPI_FLASH_BufferWrite(uiCfg.F,REFLSHE_FLGA_ADD,4);
 }
-
+  
   gCfgItems.filamentchange_load_length   = 200;
   gCfgItems.filamentchange_load_speed    = 1000;
   gCfgItems.filamentchange_unload_length = 200;
@@ -197,7 +197,7 @@ void gCfgItems_init() {
   gCfgItems.filament_limit_temper        = 200;
 
   gCfgItems.encoder_enable = true;
-  
+
 void ui_cfg_init() {
   uiCfg.curTempType         = 0;
   uiCfg.curSprayerChoose    = 0;
@@ -219,7 +219,7 @@ void ui_cfg_init() {
   uiCfg.filament_loading_time_cnt    = 0;
   uiCfg.filament_unloading_time_flg  = 0;
   uiCfg.filament_unloading_time_cnt  = 0;
-
+	
   #if ENABLED(USE_WIFI_FUNCTION)
     memset(&wifiPara, 0, sizeof(wifiPara));
     memset(&ipPara, 0, sizeof(ipPara));
@@ -230,9 +230,9 @@ void ui_cfg_init() {
     strcpy(ipPara.mask, IP_MASK);
     strcpy(ipPara.gate, IP_GATE);
     strcpy(ipPara.dns, IP_DNS);
-
+		
     ipPara.dhcp_flag = IP_DHCP_FLAG;
-
+		
     //AP
     strcpy(ipPara.dhcpd_ip, AP_IP_ADDR);
     strcpy(ipPara.dhcpd_mask, AP_IP_MASK);
@@ -240,9 +240,9 @@ void ui_cfg_init() {
     strcpy(ipPara.dhcpd_dns, AP_IP_DNS);
     strcpy(ipPara.start_ip_addr, IP_START_IP);
     strcpy(ipPara.end_ip_addr, IP_END_IP);
-
+	
     ipPara.dhcpd_flag = AP_IP_DHCP_FLAG;
-
+	
     strcpy((char*)uiCfg.cloud_hostUrl, "baizhongyun.cn");
     uiCfg.cloud_port = 10086;
   #endif
@@ -450,7 +450,7 @@ void titleText_cat(char *str, int strSize, char *addPart) {
 char *getDispText(int index) {
 
   ZERO(public_buf_l);
-
+  
   switch (disp_state_stack._disp_state[index]) {
     case PRINT_READY_UI:
       strcpy(public_buf_l, main_menu.title);
@@ -508,7 +508,7 @@ char *getDispText(int index) {
   lv_bar_style_indic.body.main_color   = lv_color_hex3(0xADF);
   lv_bar_style_indic.body.grad_color   = lv_color_hex3(0xADF);
   lv_bar_style_indic.body.border.color = lv_color_hex3(0xADF);
-  
+
       else strcpy(public_buf_l, preheat_menu.title);
       break;
     case SET_UI:
@@ -688,7 +688,7 @@ char *creat_title_text() {
           }
         }
 
-        card.setIndex((gPicturePreviewStart + To_pre_view) + size * row + 8);
+        card.setIndex(gPicturePreviewStart + size * row + 8);
         SPI_TFT.setWindow(xpos_pixel, ypos_pixel + row, 200, 1);
 
         j = i = 0;
@@ -1066,7 +1066,7 @@ void GUI_RefreshPage() {
     #endif
 
     case BIND_UI:
-      /*refresh_bind_ui();*/
+      refresh_bind_ui();
       break;
 
     case FILAMENTCHANGE_UI:
@@ -1106,7 +1106,7 @@ void GUI_RefreshPage() {
 	  	{
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
-
+					
               lv_clear_wifi_tips();
               wifi_tips_type = TIPS_TYPE_WIFI_CONECTED;
               lv_draw_wifi_tips();
@@ -1248,7 +1248,7 @@ void clear_cur_ui() {
       lv_clear_manualLevel();
       break;
     case BIND_UI:
-      //Clear_Bind();
+      lv_clear_cloud_bind();
       break;
     #if HAS_BED_PROBE
       case NOZZLE_PROBE_OFFSET_UI:
@@ -1388,7 +1388,7 @@ void clear_cur_ui() {
         lv_clear_encoder_settings();
         break;
     #endif
-    default: break;
+    default: break;  
   }
   //GUI_Clear();
 }
@@ -1477,7 +1477,7 @@ void draw_return_ui() {
         lv_draw_manualLevel();
         break;
       case BIND_UI:
-        //draw_bind();
+        lv_draw_cloud_bind();
         break;
       #if HAS_BED_PROBE
         case NOZZLE_PROBE_OFFSET_UI:

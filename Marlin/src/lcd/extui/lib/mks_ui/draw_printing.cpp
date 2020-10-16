@@ -189,7 +189,7 @@ void lv_draw_printing(void) {
 
     lv_img_set_src(buttonZpos, "F:/bmp_zpos_state.bin");
 
-    if (uiCfg.print_state == WORKING) {
+    if (uiCfg.print_state == WORKING || uiCfg.print_state == RESUMING) {
       lv_imgbtn_set_src(buttonPause, LV_BTN_STATE_REL, "F:/bmp_pause.bin");
       lv_imgbtn_set_src(buttonPause, LV_BTN_STATE_PR, "F:/bmp_pause.bin");
     }
@@ -425,6 +425,7 @@ void setProBarRate() {
             marlin_state = MF_RUNNING;
           }
         #endif
+        uiCfg.print_state = IDLE;
       }
     }
   }
