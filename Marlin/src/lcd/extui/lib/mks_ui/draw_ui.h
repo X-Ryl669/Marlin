@@ -45,6 +45,7 @@
 #include "draw_operation.h"
 #include "draw_preHeat.h"
 #include "draw_extrusion.h"
+#include "draw_extrusion_m.h"
 #include "draw_home.h"
 #include "draw_more.h"
 #include "draw_move_motor.h"
@@ -246,6 +247,7 @@ typedef enum {
   DIALOG_UI,
   WIFI_UI,
   MORE_UI,
+  EXTRUSION_UI_M,
   FILETRANSFER_UI,
   FILETRANSFERSTATE_UI,
   PRINT_MORE_UI,

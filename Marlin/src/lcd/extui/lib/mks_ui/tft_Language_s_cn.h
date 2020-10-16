@@ -254,6 +254,7 @@
 #define ENCODER_CONF_TEXT_CN                  "是否使用旋钮功能?"
 
 #define LEVELING_TEXT_CN            "调平"
+#define MLEVELING_TEXT_CN            "调平"
 #define AUTO_LEVELING_TEXT_CN       "自动调平"
 #define SET_TEXT_CN                 "设置"
 #define MORE_TEXT_CN                "更多"
@@ -275,6 +276,7 @@
 #define TOOL_MOVE_CN                "移动"
 #define TOOL_HOME_CN                "回零"
 #define TOOL_LEVELING_CN            "调平"
+#define TOOL_MLEVELING_CN            "调平"
 #define TOOL_AUTO_LEVELING_CN       "自动调平"
 #define TOOL_FILAMENT_CN            "换料"
 #define TOOL_MORE_CN                "更多"
