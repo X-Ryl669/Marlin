@@ -45,7 +45,6 @@
 #include "draw_operation.h"
 #include "draw_preHeat.h"
 #include "draw_extrusion.h"
-#include "draw_extrusion_m.h"
 #include "draw_home.h"
 #include "draw_more.h"
 #include "draw_move_motor.h"
@@ -86,6 +85,7 @@
 #include "../../inc/MarlinConfigPre.h"
 #define FILE_SYS_USB	0
 #define FILE_SYS_SD	1
+  #include "draw_cloud_bind.h"
 
 #define TICK_CYCLE 1
 
@@ -143,6 +143,10 @@
 
   #define PARA_UI_STATE_POS_X     380
   #define PARA_UI_STATE_V           2
+
+  #define QRCODE_X 	                20
+  #define QRCODE_Y 	                40
+  #define QRCODE_WIDTH	            160
 
 #else // ifdef TFT35
 
@@ -247,7 +251,6 @@ typedef enum {
   DIALOG_UI,
   WIFI_UI,
   MORE_UI,
-  EXTRUSION_UI_M,
   FILETRANSFER_UI,
   FILETRANSFERSTATE_UI,
   PRINT_MORE_UI,

@@ -995,6 +995,7 @@ void disp_language_init() {
       cloud_menu.unbind       = CLOUD_UNBIND_CN;
       cloud_menu.unbinding    = CLOUD_UNBINDED_CN;
       cloud_menu.disconnected = CLOUD_DISCONNECTED_CN;
+      cloud_menu.unbinded     = CLOUD_UNBINDED_CN;
       cloud_menu.disable      = CLOUD_DISABLE_CN;
       //
       about_menu.title   = ABOUT_TEXT_CN;
@@ -1253,6 +1254,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_T_CN;
             cloud_menu.unbinding    = CLOUD_UNBINDED_T_CN;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_T_CN;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_T_CN;
             cloud_menu.disable      = CLOUD_DISABLE_T_CN;
             //
             about_menu.title   = ABOUT_TEXT_T_CN;
@@ -1502,6 +1504,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_EN;
             cloud_menu.unbinding    = CLOUD_UNBINDED_EN;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_EN;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_EN;
             cloud_menu.disable      = CLOUD_DISABLE_EN;
             //
             about_menu.title   = TITLE_ABOUT_EN;
@@ -1843,6 +1846,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_RU;
             cloud_menu.unbinding    = CLOUD_UNBINDED_RU;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_RU;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_RU;
             cloud_menu.disable      = CLOUD_DISABLE_RU;
             //
             about_menu.title   = ABOUT_TEXT_RU;
@@ -2091,6 +2095,7 @@ void disp_language_init() {
             cloud_menu.unbind       = CLOUD_UNBIND_SP;
             cloud_menu.unbinding    = CLOUD_UNBINDED_SP;
             cloud_menu.disconnected = CLOUD_DISCONNECTED_SP;
+            cloud_menu.unbinded     = CLOUD_UNBINDED_SP;
             cloud_menu.disable      = CLOUD_DISABLE_SP;
             //
             about_menu.title   = ABOUT_TEXT_SP;
@@ -2340,6 +2345,7 @@ void disp_language_init() {
           cloud_menu.unbind       = CLOUD_UNBIND_FR;
           cloud_menu.unbinding    = CLOUD_UNBINDED_FR;
           cloud_menu.disconnected = CLOUD_DISCONNECTED_FR;
+          cloud_menu.unbinded     = CLOUD_UNBINDED_FR;
           cloud_menu.disable      = CLOUD_DISABLE_FR;
           //
           about_menu.title   = ABOUT_TEXT_FR;
@@ -2585,6 +2591,7 @@ void disp_language_init() {
           cloud_menu.unbind       = CLOUD_UNBIND_IT;
           cloud_menu.unbinding    = CLOUD_UNBINDED_IT;
           cloud_menu.disconnected = CLOUD_DISCONNECTED_IT;
+          cloud_menu.unbinded     = CLOUD_UNBINDED_IT;
           cloud_menu.disable      = CLOUD_DISABLE_IT;
           //
           about_menu.title   = ABOUT_TEXT_IT;
@@ -2830,6 +2837,7 @@ void disp_language_init() {
       cloud_menu.unbind       = CLOUD_UNBIND_EN;
       cloud_menu.unbinding    = CLOUD_UNBINDED_EN;
       cloud_menu.disconnected = CLOUD_DISCONNECTED_EN;
+      cloud_menu.unbinded     = CLOUD_UNBINDED_EN;
       cloud_menu.disable      = CLOUD_DISABLE_EN;
       //
       about_menu.title   = TITLE_ABOUT_EN;
