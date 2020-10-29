@@ -46,11 +46,15 @@
 
 extern lv_group_t * g;
 static lv_obj_t * scr;
-static lv_obj_t *labelExt1, * labelFan, * labelZpos, * labelTime;
+static lv_obj_t * labelExt1, * labelFan, * labelZpos, * labelTime;
 TERN_(HAS_MULTI_EXTRUDER, static lv_obj_t *labelExt2;)
 static lv_obj_t *labelPause, * labelStop, * labelOperat;
 static lv_obj_t * bar1, *bar1ValueText;
 static lv_obj_t * buttonPause, *buttonOperat, *buttonStop;
+
+#if !defined(SINGLENOZZLE) && EXTRUDERS == 2
+  static lv_obj_t *labelExt2;
+#endif
 
 #if HAS_HEATED_BED
   static lv_obj_t* labelBed;
@@ -138,6 +142,10 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
 }
 
 void lv_draw_printing(void) {
+  #if !defined(SINGLENOZZLE) && EXTRUDERS == 2
+    lv_obj_t *buttonExt2;
+  #endif
+
   disp_state_stack._disp_index = 0;
   ZERO(disp_state_stack._disp_state);
   disp_state_stack._disp_state[disp_state_stack._disp_index] = PRINTING_UI;

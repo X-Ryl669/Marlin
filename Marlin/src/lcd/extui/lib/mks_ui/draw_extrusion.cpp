@@ -33,6 +33,7 @@
 #include "../../../../MarlinCore.h"
 #include "../../../../module/temperature.h"
 #include "../../../../gcode/queue.h"
+#include "../../../../module/motion.h"
 
 static lv_obj_t * scr;
 extern lv_group_t*  g;
@@ -259,6 +260,8 @@ void lv_draw_extrusion(void) {
     }
   #endif
 
+  uiCfg.curSprayerChoose = active_extruder;
+
   disp_ext_type();
   disp_ext_step();
   disp_ext_speed();
@@ -297,11 +300,11 @@ void disp_ext_speed() {
     lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_PR, "F:/bmp_speed_high.bin");
   }
   else if (uiCfg.extruSpeed == 1) {
-  lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_REL, "F:/bmp_speed_slow.bin");
+    lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_REL, "F:/bmp_speed_slow.bin");
     lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_PR, "F:/bmp_speed_slow.bin");
   }
   else {
-  lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_REL, "F:/bmp_speed_normal.bin");
+    lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_REL, "F:/bmp_speed_normal.bin");
     lv_imgbtn_set_src(buttonSpeed, LV_BTN_STATE_PR, "F:/bmp_speed_normal.bin");
   }
 
@@ -325,7 +328,11 @@ void disp_hotend_temp() {
   char buf[20] = {0};
   public_buf_l[0] = '\0';
   strcat(public_buf_l, extrude_menu.temper_text);
-  sprintf(buf, extrude_menu.temp_value, (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].celsius,  (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].target);
+  #if defined(SINGLENOZZLE)
+    sprintf(buf, extrude_menu.temp_value, (int)thermalManager.temp_hotend[0].celsius,  (int)thermalManager.temp_hotend[0].target);
+  #else
+    sprintf(buf, extrude_menu.temp_value, (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].celsius,  (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].target);
+  #endif
   strcat(public_buf_l, buf);
   lv_label_set_text(tempText, public_buf_l);
   lv_obj_align(tempText, NULL, LV_ALIGN_CENTER, 0, -50);
