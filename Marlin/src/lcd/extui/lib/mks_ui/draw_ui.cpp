@@ -70,7 +70,7 @@ uint8_t printing_rate_update_flag;
 
 extern uint8_t once_flag;
 extern uint8_t sel_id;
-extern uint8_t public_buf[512];
+extern uint8_t public_buf[513];
 uint8_t bmp_public_buf[14 * 1024];
 
 extern void LCD_IO_WriteData(uint16_t RegValue);
@@ -449,9 +449,11 @@ char *getDispText(int index) {
     case MESHLEVELING_UI:
       strcpy(public_buf_l, leveling_menu.title);
       break;
-    case BIND_UI:
-      strcpy(public_buf_l, cloud_menu.title);
-      break;
+    #if USE_WIFI_FUNCTION
+      case BIND_UI:
+        strcpy(public_buf_l, cloud_menu.title);
+        break;
+    #endif
     case ZOFFSET_UI:
       strcpy(public_buf_l, zoffset_menu.title);
       break;
@@ -1004,11 +1006,11 @@ void GUI_RefreshPage() {
         temperature_change_frequency = 0;
       }
         break;
+    
+      case BIND_UI:
+        refresh_bind_ui();
+        break;
     #endif  //USE_WIFI_FUNCTION
-    case BIND_UI:
-      refresh_bind_ui();
-      break;
-
     case FILAMENTCHANGE_UI:
       if (temperature_change_frequency) {
         temperature_change_frequency = 0;
@@ -1187,9 +1189,11 @@ void clear_cur_ui() {
     case LEVELING_UI:
       lv_clear_manualLevel();
       break;
-    case BIND_UI:
-      lv_clear_cloud_bind();
-      break;
+    #if USE_WIFI_FUNCTION
+      case BIND_UI:
+        lv_clear_cloud_bind();
+        break;
+    #endif  //USE_WIFI_FUNCTION
     case ZOFFSET_UI:
       //Clear_Zoffset();
       break;
@@ -1420,9 +1424,11 @@ void draw_return_ui() {
       case LEVELING_UI:
         lv_draw_manualLevel();
         break;
-      case BIND_UI:
-        lv_draw_cloud_bind();
-        break;
+      #if USE_WIFI_FUNCTION
+        case BIND_UI:
+          lv_draw_cloud_bind();
+          break;
+      #endif
 
         #if tan_mask
           case ZOFFSET_UI:
