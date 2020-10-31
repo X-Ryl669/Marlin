@@ -119,7 +119,7 @@ void gCfgItems_init() {
   gCfgItems.pausePosY        = -1;
   gCfgItems.pausePosZ        = 5;
   gCfgItems.cloud_enable = true;
-  #if USE_WIFI_FUNCTION
+  #if 1//USE_WIFI_FUNCTION
     gCfgItems.wifi_mode_sel = STA_MODEL;
     gCfgItems.fileSysType   = FILE_SYS_SD;
     gCfgItems.wifi_type     = ESP_WIFI;

@@ -122,7 +122,7 @@
 
 // SD card information first addr
 #define VAR_INF_ADDR                    0x000000
-#define FLASH_INF_VALID_FLAG            0x20200831
+#define FLASH_INF_VALID_FLAG            0x20201030
 
 
 union union32 {
