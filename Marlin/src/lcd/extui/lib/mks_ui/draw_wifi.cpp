@@ -118,8 +118,6 @@ void lv_draw_wifi(void) {
   #if HAS_ROTARY_ENCODER
     if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonBack);
   #endif
-		}
-	#endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   lv_obj_set_pos(buttonBack,BTN_X_PIXEL*3+INTERVAL_V*4,  BTN_Y_PIXEL+INTERVAL_H+titleHeight);
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
@@ -138,21 +136,29 @@ void lv_draw_wifi(void) {
     lv_imgbtn_set_src(buttonReconnect, LV_BTN_STATE_PR, "F:/bmp_wifi.bin");
     lv_imgbtn_set_style(buttonReconnect, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonReconnect, LV_BTN_STATE_REL, &tft_style_label_rel);
-		
+
     #if HAS_ROTARY_ENCODER
       if (gCfgItems.encoder_enable) lv_group_add_obj(g, buttonReconnect);
     #endif
 
-	  	#endif // BUTTONS_EXIST(EN1, EN2, ENC)
+				lv_group_add_obj(g, buttonReconnect);
+		#endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
     lv_obj_set_pos(buttonReconnect,BTN_X_PIXEL*2+INTERVAL_V*3,  BTN_Y_PIXEL+INTERVAL_H+titleHeight);
     lv_btn_set_layout(buttonReconnect, LV_LAYOUT_OFF);
-
-		lv_obj_set_pos(buttonCloud,BTN_X_PIXEL+INTERVAL_V*2,  BTN_Y_PIXEL+INTERVAL_H+titleHeight);
-		lv_btn_set_layout(buttonCloud, LV_LAYOUT_OFF);
+		if (gCfgItems.cloud_enable == true) {
+			lv_obj_set_pos(buttonCloud,BTN_X_PIXEL+INTERVAL_V*2,  BTN_Y_PIXEL+INTERVAL_H+titleHeight);
+			lv_btn_set_layout(buttonCloud, LV_LAYOUT_OFF);
   }
+	}
 
   label_Back = lv_label_create(buttonBack, NULL);
+
+	#if BUTTONS_EXIST(EN1, EN2, ENC)
+		if (gCfgItems.encoder_enable == true) {
+			lv_group_add_obj(g, buttonBack);
+		}
+	#endif // BUTTONS_EXIST(EN1, EN2, ENC)
 
   if (gCfgItems.wifi_mode_sel == STA_MODEL) {
     //label_Cloud = lv_label_create(buttonCloud, NULL);

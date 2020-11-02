@@ -37,6 +37,8 @@
 #include "../../../../lcd/ultralcd.h"
 #include "../../../../sd/cardreader.h"
 #include "../../../../module/planner.h"
+#include "../../../../module/servo.h"
+#include "../../../../module/probe.h"
 #if ENABLED(POWER_LOSS_RECOVERY)
   #include "../../../../feature/powerloss.h"
 #endif
@@ -1810,7 +1812,18 @@ void stopEspTransfer() {
 
 	wifi_delay(200);
   esp_port_begin(1);
-  if (wifiTransError.flag != 0x1) WIFI_IO1_RESET();
+
+	#if HAS_SERVOS
+    	servo_init();
+  	#endif
+
+  	#if HAS_Z_SERVO_PROBE
+    	probe.servo_probe_init();
+  	#endif
+	
+	if(wifiTransError.flag != 0x1) {
+		WIFI_IO1_RESET();
+	}
 }
 
 void wifi_rcv_handle() {
