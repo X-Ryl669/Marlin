@@ -273,6 +273,7 @@ typedef enum {
   EXTRUSION_UI,
   float current_x_position_bak;
   float current_y_position_bak;
+  float current_z_position_bak;
   float current_e_position_bak;
   FAN_UI,
   PRE_HEAT_UI,
