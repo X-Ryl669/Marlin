@@ -244,7 +244,7 @@ static void btn_cancel_event_cb(lv_obj_t * btn, lv_event_t event) {
 }
 
 void lv_draw_dialog(uint8_t type) {
-	
+
   lv_obj_t * btnOk = NULL;
   lv_obj_t * btnCancel = NULL;
   if (disp_state_stack._disp_state[disp_state_stack._disp_index] != DIALOG_UI) {
@@ -268,7 +268,7 @@ void lv_draw_dialog(uint8_t type) {
     lv_obj_set_pos(title, TITLE_XPOS, TITLE_YPOS);
     lv_label_set_text(title, creat_title_text());
   }
-  
+
   lv_refr_now(lv_refr_get_disp_refreshing());
 
 
@@ -549,7 +549,7 @@ void lv_draw_dialog(uint8_t type) {
 	else if(upload_result == 3) {
 		char buf[200];
 		int _index = 0;
-        
+
 		memset(buf,0,sizeof(200));
 			
 		strcpy(buf, DIALOG_UPLOAD_FINISH_EN);
@@ -608,24 +608,24 @@ void lv_draw_dialog(uint8_t type) {
 
         ZERO(buf);
 
-        strcpy(buf, DIALOG_UPLOAD_FINISH_EN);
+        strcpy(buf, machine_menu.wifiUploadFin);
         _index = strlen(buf);
         buf[_index] = '\n';
         _index++;
-        strcat(buf, DIALOG_UPLOAD_SIZE_EN);
+        strcat(buf, machine_menu.wifiUploadSize);
 
         _index = strlen(buf);
         buf[_index] = ':';
         _index++;
         sprintf(&buf[_index], " %d KBytes\n", (int)(upload_size / 1024));
 
-        strcat(buf, DIALOG_UPLOAD_TIME_EN);
+        strcat(buf, machine_menu.wifiUploadTime);
         _index = strlen(buf);
         buf[_index] = ':';
         _index++;
         sprintf(&buf[_index], " %d s\n", (int)upload_time);
 
-        strcat(buf, DIALOG_UPLOAD_SPEED_EN);
+        strcat(buf, machine_menu.wifiUploadSpeed);
         _index = strlen(buf);
         buf[_index] = ':';
         _index++;
@@ -684,7 +684,7 @@ void lv_draw_dialog(uint8_t type) {
       if (btnCancel) lv_group_add_obj(g, btnCancel);
     }
   #endif
-  
+
 }
 
 void filament_sprayer_temp() {
