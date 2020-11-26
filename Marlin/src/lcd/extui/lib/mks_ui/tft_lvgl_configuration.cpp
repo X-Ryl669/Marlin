@@ -117,6 +117,13 @@ void tft_lvgl_init() {
   ui_cfg_init();
   disp_language_init();
 
+  #if USE_WIFI_FUNCTION
+	mks_esp_wifi_init();
+	WIFISERIAL.begin(WIFI_BAUDRATE);
+	uint32_t serial_connect_timeout = millis() + 1000UL;
+  while (/*!WIFISERIAL && */PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
+	#endif
+
   //init tft first!
   SPI_TFT.spi_init(SPI_FULL_SPEED);
   SPI_TFT.LCD_init();
@@ -290,6 +297,13 @@ bool my_touchpad_read(lv_indev_drv_t * indev_driver, lv_indev_data_t * data) {
   }
 
   return false; // Return `false` since no data is buffering or left to read
+  #if LV_USE_ROTATION_180
+  (*x) = XPT2046_HOR_RES - (uint32_t)((uint32_t)(*x) * XPT2046_HOR_RES)/(XPT2046_X_MAX - XPT2046_X_MIN);    
+  (*y) = XPT2046_VER_RES - (uint32_t)((uint32_t)(*y) * XPT2046_VER_RES)/(XPT2046_Y_MAX - XPT2046_Y_MIN);
+  #else
+  (*x) = (uint32_t)((uint32_t)(*x) * XPT2046_HOR_RES)/(XPT2046_X_MAX - XPT2046_X_MIN);    
+  (*y) = (uint32_t)((uint32_t)(*y) * XPT2046_VER_RES)/(XPT2046_Y_MAX - XPT2046_Y_MIN);
+  #endif
 }
 
 int16_t enc_diff = 0;

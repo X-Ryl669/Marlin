@@ -1063,6 +1063,7 @@ void GUI_RefreshPage() {
         switch (wifi_tips_type) {
           case TIPS_TYPE_JOINING:
             if (wifi_link_state == WIFI_CONNECTED && strcmp((const char *)wifi_list.wifiConnectedName,(const char *)wifi_list.wifiName[wifi_list.nameIndex]) == 0) {
+	  	{
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
 
@@ -1072,15 +1073,18 @@ void GUI_RefreshPage() {
 
             }
             if (tips_disp.timer_count >= 30 * 1000) {
+		{
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
               lv_clear_wifi_tips();
               wifi_tips_type = TIPS_TYPE_TAILED_JOIN;
               lv_draw_wifi_tips();
+			lv_draw_wifi_tips();
             }
             break;
           case TIPS_TYPE_TAILED_JOIN:
             if (tips_disp.timer_count >= 3 * 1000) {
+		{
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
 
@@ -1091,6 +1095,7 @@ void GUI_RefreshPage() {
             break;
           case TIPS_TYPE_WIFI_CONECTED:
             if (tips_disp.timer_count >= 3 * 1000) {
+		{
               tips_disp.timer = TIPS_TIMER_STOP;
               tips_disp.timer_count = 0;
 
@@ -1100,6 +1105,7 @@ void GUI_RefreshPage() {
             }
             break;
           default: break;
+			   	break;
         }
         break;
     #endif

@@ -46,7 +46,7 @@ extern lv_group_t*  g;
 #define ID_S_LANGUAGE     6
 #define ID_S_MACHINE_PARA 7
 #define ID_S_EEPROM_SET   8
-#define ID_S_RETURN       9
+#define ID_S_RETURN			  9
 
 static void event_handler(lv_obj_t * obj, lv_event_t event) {
   #if ENABLED(USE_WIFI_FUNCTION)
@@ -126,7 +126,7 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
     #if ENABLED(USE_WIFI_FUNCTION)
       case ID_S_WIFI:
         if (event == LV_EVENT_CLICKED) {
-
+			
         }
         else if (event == LV_EVENT_RELEASED) {
         if (gCfgItems.wifi_mode_sel == STA_MODEL) {
@@ -163,6 +163,9 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
       }
       break;
     #endif
+  }
+	break;
+	#endif
   }
 }
 
@@ -212,6 +215,8 @@ void lv_draw_set(void) {
   #endif
   #if ENABLED(USE_WIFI_FUNCTION)
   buttonWifi        = lv_imgbtn_create(scr, NULL);
+  #endif
+  buttonWifi = lv_imgbtn_create(scr, NULL);
   #endif
   buttonBack        = lv_imgbtn_create(scr, NULL);
 
@@ -271,10 +276,11 @@ void lv_draw_set(void) {
     lv_obj_set_event_cb_mks(buttonBack, event_handler, ID_S_RETURN,NULL , 0);
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_REL, "F:/bmp_return.bin");
     lv_imgbtn_set_src(buttonBack, LV_BTN_STATE_PR, "F:/bmp_return.bin");
+	  #endif
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_PR, &tft_style_label_pre);
     lv_imgbtn_set_style(buttonBack, LV_BTN_STATE_REL, &tft_style_label_rel);
 
-  #endif // if 1
+    #endif // if 1
 
   /*lv_obj_set_pos(buttonWifi,INTERVAL_V,titleHeight);
   lv_obj_set_pos(buttonFan,BTN_X_PIXEL+INTERVAL_V*2,titleHeight);
@@ -298,6 +304,9 @@ void lv_draw_set(void) {
   #if ENABLED(USE_WIFI_FUNCTION)
     lv_obj_set_pos(buttonWifi,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight);
   #endif
+  #if USE_WIFI_FUNCTION
+  lv_obj_set_pos(buttonWifi,BTN_X_PIXEL*2+INTERVAL_V*3,BTN_Y_PIXEL+INTERVAL_H+titleHeight);
+  #endif
   lv_obj_set_pos(buttonBack, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight);
 
   /// Create labels on the buttons
@@ -314,6 +323,8 @@ void lv_draw_set(void) {
   #if ENABLED(USE_WIFI_FUNCTION)
     lv_btn_set_layout(buttonWifi, LV_LAYOUT_OFF);
   #endif
+  lv_btn_set_layout(buttonWifi, LV_LAYOUT_OFF);
+  #endif
   lv_btn_set_layout(buttonBack, LV_LAYOUT_OFF);
 
   //lv_obj_t *labelWifi= lv_label_create(buttonWifi, NULL);
@@ -328,6 +339,8 @@ void lv_draw_set(void) {
   #endif
   #if ENABLED(USE_WIFI_FUNCTION)
     lv_obj_t *label_Wifi      = lv_label_create(buttonWifi, NULL);
+  #endif
+  lv_obj_t * label_Wifi = lv_label_create(buttonWifi, NULL);
   #endif
   lv_obj_t *label_Back        = lv_label_create(buttonBack, NULL);
 
@@ -360,6 +373,10 @@ void lv_draw_set(void) {
       lv_obj_align(label_Wifi, buttonWifi, LV_ALIGN_IN_BOTTOM_MID,0, BUTTON_TEXT_Y_OFFSET);
     #endif
 
+	#if USE_WIFI_FUNCTION
+	lv_label_set_text(label_Wifi, set_menu.wifi);
+	lv_obj_align(label_Wifi, buttonWifi, LV_ALIGN_IN_BOTTOM_MID,0, BUTTON_TEXT_Y_OFFSET);
+	#endif
     lv_label_set_text(label_Back, common_menu.text_back);
     lv_obj_align(label_Back, buttonBack, LV_ALIGN_IN_BOTTOM_MID, 0, BUTTON_TEXT_Y_OFFSET);
   }

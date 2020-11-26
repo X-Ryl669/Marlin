@@ -292,9 +292,11 @@ void lv_draw_dialog(uint8_t type) {
       lv_btn_set_style(btnOk, LV_BTN_STYLE_PR, &style_btn_pr);       // Set the button's pressed style
       lv_obj_t *labelOk = lv_label_create(btnOk, NULL);             // Add a label to the button
       lv_label_set_text(labelOk, print_file_dialog_menu.confirm);    // Set the labels text
-  }
+
+	}
   else if (uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_WAITING
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_INSERT
+        || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_HEAT
         || uiCfg.dialogType == DIALOG_PAUSE_MESSAGE_HEAT
   ) {
     btnOk = lv_btn_create(scr, NULL);                   // Add a button the current screen
@@ -506,6 +508,61 @@ void lv_draw_dialog(uint8_t type) {
   else if (uiCfg.dialogType == DIALOG_REVERT_EEPROM_TIPS) {
     lv_label_set_text(labelDialog, eeprom_menu.revertTips);
     lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+  }
+  else if(uiCfg.dialogType == DIALOG_WIFI_CONFIG_TIPS) {
+  	lv_label_set_text(labelDialog, machine_menu.wifiConfigTips);
+	lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+  }
+  else if(uiCfg.dialogType == WIFI_ENABLE_TIPS) {
+	lv_label_set_text(labelDialog, print_file_dialog_menu.wifi_enable_tips);
+	lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+  }
+  else if(uiCfg.dialogType == DIALOG_TRANSFER_NO_DEVICE) {
+	lv_label_set_text(labelDialog, DIALOG_UPDATE_NO_DEVICE_EN);
+	lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+  }
+  else if(uiCfg.dialogType == DIALOG_TYPE_UPLOAD_FILE) {
+  	if(upload_result == 1) {
+		lv_label_set_text(labelDialog, DIALOG_UPLOAD_ING_EN);
+		lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+	}
+	else if(upload_result == 2) {
+		lv_label_set_text(labelDialog, DIALOG_UPLOAD_ERROR_EN);
+		lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+	}
+	else if(upload_result == 3) {
+		char buf[200];
+		int _index = 0;
+			
+		memset(buf,0,sizeof(200));
+			
+		strcpy(buf, DIALOG_UPLOAD_FINISH_EN);
+		_index = strlen(buf);
+		buf[_index] = '\n';
+		_index++;
+		strcat(buf, DIALOG_UPLOAD_SIZE_EN);
+			
+		_index = strlen(buf);
+		buf[_index] = ':';
+		_index++;
+		sprintf(&buf[_index], " %d KBytes\n", (int)(upload_size / 1024));
+
+		strcat(buf, DIALOG_UPLOAD_TIME_EN);
+		_index = strlen(buf);
+		buf[_index] = ':';
+		_index++;
+		sprintf(&buf[_index], " %d s\n", (int)upload_time);
+			
+		strcat(buf, DIALOG_UPLOAD_SPEED_EN);
+		_index = strlen(buf);
+		buf[_index] = ':';
+		_index++;
+		sprintf(&buf[_index], " %d KBytes/s\n", (int)(upload_size / upload_time / 1024));	
+
+		lv_label_set_text(labelDialog, buf);
+		lv_obj_align(labelDialog, NULL, LV_ALIGN_CENTER, 0, -20);
+			
+	}
   }
   else if (uiCfg.dialogType == DIALOG_WIFI_CONFIG_TIPS) {
     lv_label_set_text(labelDialog, machine_menu.wifiConfigTips);

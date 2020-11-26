@@ -86,6 +86,15 @@
   #include "draw_wifi_tips.h"
 #endif
 
+#include "wifiSerial.h"
+#include "wifi_module.h"
+#include "wifi_upload.h"
+#include "draw_wifi_settings.h"
+#include "draw_keyboard.h"
+#include "draw_wifi.h"
+#include "draw_wifi_list.h"
+#include "draw_wifi_tips.h"
+
 #include "../../inc/MarlinConfigPre.h"
 #define FILE_SYS_USB  0
 #define FILE_SYS_SD 1

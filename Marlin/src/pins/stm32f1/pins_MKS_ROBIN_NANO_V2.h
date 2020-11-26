@@ -217,6 +217,8 @@
 #define SERVO0_PIN                          PA8   // Enable BLTOUCH
 
 //#define LED_PIN                           PB2
+#define WIFI_IO1_PIN       			PC7
+#define WIFI_RESET_PIN				PE9
 
 //
 // SD Card
