@@ -187,6 +187,7 @@ void machine_setting_disp() {
     machine_menu.MotorDirConf     = MOTORDIRCONF_CN;
     machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_CN;
     machine_menu.PausePosition    = PAUSE_POSITION_CN;
+	  machine_menu.WifiSettings     = WIFI_SETTINGS_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_CN;
@@ -272,6 +273,14 @@ void machine_setting_disp() {
     machine_menu.xPos         = PAUSE_POSITION_X_CN;
     machine_menu.yPos         = PAUSE_POSITION_Y_CN;
     machine_menu.zPos         = PAUSE_POSITION_Z_CN;
+    machine_menu.WifiConfTitle = WIFI_SETTINGS_TITLE_CN;
+    machine_menu.wifiMode = WIFI_SETTINGS_MODE_CN;
+    machine_menu.wifiName = WIFI_SETTINGS_NAME_CN;
+    machine_menu.wifiPassWord = WIFI_SETTINGS_PASSWORD_CN;
+    machine_menu.wifiCloud = WIFI_SETTINGS_CLOUD_CN;
+    machine_menu.wifiConfig = WIFI_SETTINGS_CONFIG_CN;
+    machine_menu.wifiEdit = WIFI_SETTINGS_EDIT_CN;
+    machine_menu.wifiConfigTips = WIFI_CONFIG_TIPS_CN;
   }
   else if (gCfgItems.language == LANG_COMPLEX_CHINESE) {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_T_CN;
@@ -396,6 +405,7 @@ void machine_setting_disp() {
     machine_menu.MotorDirConf     = MOTORDIRCONF_T_CN;
     machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_T_CN;
     machine_menu.PausePosition    = PAUSE_POSITION_T_CN;
+	  machine_menu.WifiSettings     = WIFI_SETTINGS_T_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_T_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_T_CN;
@@ -484,6 +494,14 @@ void machine_setting_disp() {
     machine_menu.yPos         = PAUSE_POSITION_Y_T_CN;
     machine_menu.zPos         = PAUSE_POSITION_Z_T_CN;
 
+    machine_menu.WifiConfTitle = WIFI_SETTINGS_TITLE_T_CN;
+    machine_menu.wifiMode = WIFI_SETTINGS_MODE_T_CN;
+    machine_menu.wifiName = WIFI_SETTINGS_NAME_T_CN;
+    machine_menu.wifiPassWord = WIFI_SETTINGS_PASSWORD_T_CN;
+    machine_menu.wifiCloud = WIFI_SETTINGS_CLOUD_T_CN;
+    machine_menu.wifiConfig = WIFI_SETTINGS_CONFIG_T_CN;
+    machine_menu.wifiEdit = WIFI_SETTINGS_EDIT_T_CN;
+    machine_menu.wifiConfigTips = WIFI_CONFIG_TIPS_T_CN;
   }
   else {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_EN;
@@ -608,6 +626,7 @@ void machine_setting_disp() {
     machine_menu.MotorDirConf     = MOTORDIRCONF_EN;
     machine_menu.HomeFeedRateConf = HOMEFEEDRATECONF_EN;
     machine_menu.PausePosition    = PAUSE_POSITION_EN;
+    machine_menu.WifiSettings     = WIFI_SETTINGS_EN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_EN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_EN;
@@ -696,6 +715,14 @@ void machine_setting_disp() {
     machine_menu.xPos         = PAUSE_POSITION_X_EN;
     machine_menu.yPos         = PAUSE_POSITION_Y_EN;
     machine_menu.zPos         = PAUSE_POSITION_Z_EN;
+    machine_menu.WifiConfTitle = WIFI_SETTINGS_TITLE_EN;
+    machine_menu.wifiMode = WIFI_SETTINGS_MODE_EN;
+    machine_menu.wifiName = WIFI_SETTINGS_NAME_EN;
+    machine_menu.wifiPassWord = WIFI_SETTINGS_PASSWORD_EN;
+    machine_menu.wifiCloud = WIFI_SETTINGS_CLOUD_EN;
+    machine_menu.wifiConfig = WIFI_SETTINGS_CONFIG_EN;
+    machine_menu.wifiEdit = WIFI_SETTINGS_EDIT_EN;
+    machine_menu.wifiConfigTips = WIFI_CONFIG_TIPS_EN;
   }
 }
 
@@ -788,22 +815,13 @@ void disp_language_init() {
   machine_menu.key_point = KEYBOARD_KEY_POINT_EN;
   machine_menu.negative  = KEYBOARD_KEY_NEGATIVE_EN;
   // wifi-list
-  #if 0
-    list_menu.title      = TEXT_WIFI_MENU_TITLE_EN;
-    list_menu.file_pages = FILE_PAGES_EN;
-    // keyboard
-    keyboard_menu.apply    = MANUAL_IP_APPLY_EN;
-    keyboard_menu.password = TEXT_WIFI_PASSWORD_EN;
-    keyboard_menu.space    = TEXT_WIFI_SAPCE_EN;
-    keyboard_menu.letter   = TEXT_WIFI_LETTER_EN;
-    keyboard_menu.digital  = TEXT_WIFI_DIGITAL_EN;
-    keyboard_menu.symbol   = TEXT_WIFI_SYMBOL_EN;
-    // tips
-    tips_menu.pointBold    = TEXT_WIFI_POINT_BOLD_EN;
-    tips_menu.joining      = TEXT_WIFI_JOINING_EN;
-    tips_menu.failedJoin   = TEXT_WIFI_FAILED_JOIN_EN;
-    tips_menu.wifiConected = TEXT_WIFI_WIFI_CONECTED_EN;
-  #endif
+  list_menu.title        = TEXT_WIFI_MENU_TITLE_EN;
+  list_menu.file_pages   = FILE_PAGES_EN;
+
+  // tips
+  tips_menu.joining      = TEXT_WIFI_JOINING_EN;
+  tips_menu.failedJoin   = TEXT_WIFI_FAILED_JOIN_EN;
+  tips_menu.wifiConected = TEXT_WIFI_WIFI_CONECTED_EN;
   machine_setting_disp();
 
   operation_menu.babystep = TEXT_BABY_STEP_EN;

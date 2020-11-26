@@ -37,7 +37,7 @@
 // Release PB4 (Y_ENABLE_PIN) from JTAG NRST role
 //
 
-//#define DISABLE_DEBUG
+#define DISABLE_DEBUG
 
 //
 // EEPROM
@@ -208,6 +208,8 @@
 #define MT_DET_PIN_INVERTING false
 
 #define WIFI_IO0_PIN                        PC13
+#define WIFI_IO1_PIN       			PC7
+#define WIFI_RESET_PIN				PE9
 
 //
 // SD Card

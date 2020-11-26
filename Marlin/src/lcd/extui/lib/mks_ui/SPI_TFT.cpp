@@ -26,6 +26,7 @@
 
 #include "SPI_TFT.h"
 #include "pic_manager.h"
+#include "tft_lvgl_configuration.h"
 
 #include "../../../../inc/MarlinConfig.h"
 
@@ -190,8 +191,11 @@ void TFT::LCD_init() {
   LCD_WR_DATA(0x96);
 
   LCD_WR_REG(0x36);
+  #if LV_USE_ROTATION_180
+  LCD_WR_DATA(0xE8);
+  #else
   LCD_WR_DATA(0x28);
-
+  #endif
   LCD_WR_REG(0x3A);
   LCD_WR_DATA(0x55);
 

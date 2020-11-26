@@ -84,6 +84,9 @@ extern uint8_t gcode_preview_over, flash_preview_begin, default_preview_flg;
 void SysTick_Callback() {
   lv_tick_inc(1);
   print_time_count();
+  if(tips_disp.timer == TIPS_TIMER_START) {
+  	tips_disp.timer_count++;
+  }
 }
 
 #if DISABLED(TFT_LVGL_UI_SPI)
@@ -414,6 +417,13 @@ void tft_lvgl_init() {
   ui_cfg_init();
   disp_language_init();
 
+  #if USE_WIFI_FUNCTION
+	mks_esp_wifi_init();
+	WIFISERIAL.begin(WIFI_BAUDRATE);
+	uint32_t serial_connect_timeout = millis() + 1000UL;
+  while (/*!WIFISERIAL && */PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
+	#endif
+
   //init tft first!
   #if ENABLED(TFT_LVGL_UI_SPI)
     SPI_TFT.spi_init(SPI_FULL_SPEED);
@@ -622,8 +632,13 @@ static void xpt2046_corr(uint16_t *x, uint16_t *y) {
   #endif
   if ((*x) > XPT2046_X_MIN) (*x) -= XPT2046_X_MIN; else (*x) = 0;
   if ((*y) > XPT2046_Y_MIN) (*y) -= XPT2046_Y_MIN; else (*y) = 0;
-  (*x) = uint32_t(uint32_t(*x) * XPT2046_HOR_RES) / (XPT2046_X_MAX - XPT2046_X_MIN);
-  (*y) = uint32_t(uint32_t(*y) * XPT2046_VER_RES) / (XPT2046_Y_MAX - XPT2046_Y_MIN);
+  #if LV_USE_ROTATION_180
+  (*x) = XPT2046_HOR_RES - (uint32_t)((uint32_t)(*x) * XPT2046_HOR_RES)/(XPT2046_X_MAX - XPT2046_X_MIN);    
+  (*y) = XPT2046_VER_RES - (uint32_t)((uint32_t)(*y) * XPT2046_VER_RES)/(XPT2046_Y_MAX - XPT2046_Y_MIN);
+  #else
+  (*x) = (uint32_t)((uint32_t)(*x) * XPT2046_HOR_RES)/(XPT2046_X_MAX - XPT2046_X_MIN);    
+  (*y) = (uint32_t)((uint32_t)(*y) * XPT2046_VER_RES)/(XPT2046_Y_MAX - XPT2046_Y_MIN);
+  #endif
   #if XPT2046_X_INV
     (*x) = XPT2046_HOR_RES - (*x);
   #endif
