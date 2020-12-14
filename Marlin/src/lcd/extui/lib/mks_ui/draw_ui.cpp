@@ -73,7 +73,7 @@ extern uint8_t sel_id;
 extern lv_group_t *g;
 
 uint8_t bmp_public_buf[14 * 1024];
-uint8_t public_buf[513];
+uint8_t public_buf[512];
 
 extern void LCD_IO_WriteData(uint16_t RegValue);
 
@@ -626,7 +626,8 @@ char *creat_title_text() {
       gPicturePreviewStart = 0;
       cur_name             = strrchr(path, '/');
       card.openFileRead(cur_name);
-      card.read(public_buf, 512);
+      public_buf[511] = 0;
+      card.read(public_buf, 511);
       p1 = (uint32_t *)strstr((char *)public_buf, ";simage:");
 
       if (p1) {
@@ -660,6 +661,7 @@ char *creat_title_text() {
 
         cur_name = strrchr(path, '/');
         card.openFileRead(cur_name);
+        public_buf[400] = 0;
 
         if (gPicturePreviewStart <= 0) {
           while (1) {
@@ -893,7 +895,7 @@ char *creat_title_text() {
 
   #endif // if 1
 
-  void Draw_default_preview(int xpos_pixel, int ypos_pixel, uint8_t sel) {
+  void draw_default_preview(int xpos_pixel, int ypos_pixel, uint8_t sel) {
     int index;
     int y_off = 0;
     W25QXX.init(SPI_QUARTER_SPEED);
@@ -922,12 +924,12 @@ char *creat_title_text() {
     #if HAS_BAK_VIEW_IN_FLASH
       if (flash_preview_begin) {
         flash_preview_begin = false;
-        Draw_default_preview(xpos_pixel, ypos_pixel, 1);
+        draw_default_preview(xpos_pixel, ypos_pixel, 1);
       }
     #endif
     #if HAS_GCODE_DEFAULT_VIEW_IN_FLASH
       if (default_preview_flg) {
-        Draw_default_preview(xpos_pixel, ypos_pixel, 0);
+        draw_default_preview(xpos_pixel, ypos_pixel, 0);
         default_preview_flg = false;
       }
     #endif

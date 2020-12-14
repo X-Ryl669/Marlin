@@ -87,7 +87,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       has_adjust_z = 1;
       break;
     case ID_BABY_STEP_Z_N:
-      sprintf_P(baby_buf, PSTR("M290 Z%.3f"), babystep_dist);
+      sprintf_P(baby_buf, PSTR("M290 Z%.3f"), -babystep_dist);
       gcode.process_subcommands_now_P(PSTR(baby_buf));
       has_adjust_z = 1;
       break;
