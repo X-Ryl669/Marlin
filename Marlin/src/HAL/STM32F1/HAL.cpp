@@ -246,6 +246,32 @@ static void NVIC_SetPriorityGrouping(uint32_t PriorityGroup) {
   } }
 #endif
 
+extern "C" {
+
+__attribute__((naked)) void __exc_hardfault() {
+  __asm__ __volatile__ (
+    ".syntax unified" "\n\t"
+    A("b .")
+    // A("tst lr, #4")
+    // A("ite eq")
+    // A("mrseq r0, msp")
+    // A("mrsne r0, psp")
+    // A("mov r1,lr")
+    // A("mov r2,#1")
+    //A("b HardFault_HandlerC")
+  );
+}
+
+__attribute__((naked)) void __exc_busfault() {
+  __asm__ __volatile__ (
+    ".syntax unified" "\n\t"
+    A("b .")
+  );
+}
+
+}
+
+
 void HAL_init() {
   NVIC_SetPriorityGrouping(0x3);
   #if PIN_EXISTS(LED)
