@@ -75,7 +75,7 @@
 
 static xyze_pos_t resume_position;
 
-#if HAS_LCD_MENU
+#if ANY(HAS_LCD_MENU, HAS_TFT_LVGL_UI)
   PauseMenuResponse pause_menu_response;
   PauseMode pause_mode = PAUSE_MODE_PAUSE_PRINT;
 #endif

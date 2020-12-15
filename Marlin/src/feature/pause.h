@@ -59,7 +59,7 @@ enum PauseMessage : char {
   PAUSE_MESSAGE_HEATING
 };
 
-#if HAS_LCD_MENU
+#if ANY(HAS_LCD_MENU, HAS_TFT_LVGL_UI)
   enum PauseMenuResponse : char {
     PAUSE_RESPONSE_WAIT_FOR,
     PAUSE_RESPONSE_EXTRUDE_MORE,
